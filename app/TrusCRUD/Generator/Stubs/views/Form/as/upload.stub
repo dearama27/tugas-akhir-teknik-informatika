@@ -1,0 +1,10 @@
+            <!-- {{label}} -->
+            <div class="form-group col-md-12">
+                <label for="{{field}}">{{label}}</label>
+                <div class="input-group">
+                    <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="{{field}}" name="{{field}}">
+                    <label class="custom-file-label" for="{{field}}">Choose file</label>
+                    </div>
+                </div>
+            </div>

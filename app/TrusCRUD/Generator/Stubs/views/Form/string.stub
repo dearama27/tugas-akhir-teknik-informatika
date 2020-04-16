@@ -1,0 +1,7 @@
+
+            <!-- {{label}} -->
+            <div class="form-group col-md-12">
+              <label for="{{field}}">{{label}} <span class="text-danger">*</span></label>
+              <input autocomplete="off" name="{{field}}" type="text" class="form-control" id="{{field}}" placeholder="" value="{{isset($data) ? $data->{{field}}:''}}">
+            </div>
+            

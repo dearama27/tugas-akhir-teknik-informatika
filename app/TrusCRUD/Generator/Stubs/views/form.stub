@@ -1,0 +1,52 @@
+@extends('adminLTE.layout')
+
+@push('title')
+Form {{title}}
+@endpush
+
+@push('page-name')
+Form {{page-name}}
+@endpush
+
+@section('content')
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card card-primary">
+      <!-- form start -->
+      <form role="form" method="POST" action="{{ route($resource.'.store') }}" {{multipart}}>
+        @csrf
+
+        <input type="hidden" name="id" value="{{isset($data) ? $data->id:''}}" />
+        
+        <div class="card-body">
+          <h4>Data {{title}}</h4>
+          <div class="row">
+
+{{form_input}}
+
+          </div>
+
+        </div>
+        <!-- /.card-body -->
+
+        <div class="card-footer">
+          <div class="btn-group">
+            <a class="btn btn-secondary" href="{{ route($resource.'.index') }}"><i class="fa fa-arrow-left"></i> Back</a>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+@endsection
+
+@push('scripts')
+{{scripts}}
+@endpush
+
+@push('styles')
+{{styles}}
+@endpush

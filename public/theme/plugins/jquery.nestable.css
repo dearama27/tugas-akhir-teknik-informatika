@@ -1,0 +1,260 @@
+
+.dd,
+.dd-list {
+  display: block;
+  padding: 0;
+  list-style: none;
+}
+.dd,
+.dd-item > button,
+.dd-list {
+  position: relative;
+}
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 0) {
+  .ui-jqgrid
+    .ui-jqgrid-pager
+    > .ui-pager-control
+    > .ui-pg-table
+    > tbody
+    > tr
+    > td#grid-pager_center
+    > .ui-pg-table {
+    width: 300px;
+  }
+}
+.dd {
+  margin: 0;
+  max-width: 100%;
+  line-height: 20px;
+}
+.dd-list {
+  margin: 0;
+}
+.dd-list .dd-list {
+  padding-left: 30px;
+}
+.dd-collapsed .dd-list {
+  display: none;
+}
+.dd-empty,
+.dd-item,
+.dd-placeholder {
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 20px;
+  line-height: 20px;
+}
+.dd-handle,
+.dd2-content {
+  display: block;
+  min-height: 38px;
+  margin: 5px 0;
+  padding: 8px 12px;
+  background: #f8faff;
+  border: 1px solid #dae2ea;
+  color: #7c9eb2;
+  text-decoration: none;
+  font-weight: 700;
+  box-sizing: border-box;
+}
+.dd-handle:hover,
+.dd2-content:hover {
+  color: #438eb9;
+  background: #f4f6f7;
+  border-color: #dce2e8;
+}
+.dd-handle[class*="btn-"],
+.dd2-content[class*="btn-"] {
+  color: #fff;
+  border: none;
+  padding: 9px 12px;
+}
+.dd-handle[class*="btn-"]:hover,
+.dd2-content[class*="btn-"]:hover {
+  opacity: 0.85;
+  color: #fff;
+}
+.dd2-handle + .dd2-content,
+.dd2-handle + .dd2-content[class*="btn-"] {
+  padding-left: 44px;
+}
+.dd-handle[class*="btn-"]:hover,
+.dd2-content[class*="btn-"]
+  .dd2-handle[class*="btn-"]:hover
+  + .dd2-content[class*="btn-"] {
+  color: #fff;
+}
+.dd-item > button:hover ~ .dd-handle,
+.dd-item > button:hover ~ .dd2-content {
+  color: #438eb9;
+  background: #f4f6f7;
+  border-color: #dce2e8;
+}
+.dd-item > button:hover ~ .dd-handle[class*="btn-"],
+.dd-item > button:hover ~ .dd2-content[class*="btn-"] {
+  opacity: 0.85;
+  color: #fff;
+}
+.dd2-handle:hover ~ .dd2-content {
+  color: #438eb9;
+  background: #f4f6f7;
+  border-color: #dce2e8;
+}
+.dd2-handle:hover ~ .dd2-content[class*="btn-"] {
+  opacity: 0.85;
+  color: #fff;
+}
+.dd2-item.dd-item > button {
+  margin-left: 34px;
+}
+.dd-item > button {
+  display: block;
+  z-index: 1;
+  cursor: pointer;
+  float: left;
+  width: 25px;
+  height: 20px;
+  margin: 5px 1px 5px 5px;
+  padding: 0;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  border: 0;
+  background: 0 0;
+  font-size: 12px;
+  line-height: 1;
+  text-align: center;
+  font-weight: 700;
+  top: 4px;
+  left: 1px;
+  color: #707070;
+}
+.dd-item > button:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f105";
+  display: block;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  text-indent: 0;
+  /* font-weight: 400; */
+  font-size: 14px;
+}
+.dd-item > button[data-action="collapse"]:before {
+  /* font-family:"Ionicons" */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f107";
+}
+.dd-item > button:hover {
+  color: #707070;
+}
+.dd-item.dd-colored > button,
+.dd-item.dd-colored > button:hover {
+  color: #eee;
+}
+.dd-empty,
+.dd-placeholder {
+  margin: 5px 0;
+  padding: 0;
+  min-height: 30px;
+  background: #f0f9ff;
+  border: 2px dashed #bed2db;
+  box-sizing: border-box;
+}
+.dd-empty {
+  border-color: #aaa;
+  border-style: solid;
+  background-color: #e5e5e5;
+}
+.dd-dragel {
+  position: absolute;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.8;
+}
+.dd-dragel > li > .dd-handle {
+  color: #4b92be;
+  background: #f1f5fa;
+  border-color: #d6e1ea;
+  border-left: 2px solid #777;
+  position: relative;
+}
+.dd-dragel > li > .dd-handle[class*="btn-"] {
+  color: #fff;
+}
+.dd-dragel > .dd-item > .dd-handle {
+  margin-top: 0;
+}
+.dd-list > li[class*="item-"] {
+  border-width: 0;
+  padding: 0;
+}
+.dd-list > li[class*="item-"] > .dd-handle {
+  border-left: 2px solid;
+  border-left-color: inherit;
+}
+.dd-list > li > .dd-handle .sticker {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.dd-dragel > li > .dd2-handle,
+.dd2-handle {
+  left: 0;
+  top: 0;
+  width: 36px;
+  margin: 0;
+  text-align: center;
+  padding: 0 !important;
+  line-height: 38px;
+  height: 38px;
+  background: #ebedf2;
+  border: 1px solid #dee4ea;
+  cursor: pointer;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+}
+.dd-dragel > li > .dd2-handle,
+.dd2-handle:hover {
+  background: #e3e8ed;
+}
+.dd2-handle[class*="btn-"] {
+  text-shadow: none !important;
+  background: rgba(0, 0, 0, 0.1) !important;
+  border-right: 1px solid #eee;
+}
+.dd2-handle[class*="btn-"]:hover {
+  background: rgba(0, 0, 0, 0.08) !important;
+}
+.dd-dragel .dd2-handle[class*="btn-"] {
+  border-color: transparent #eee transparent transparent;
+}
+.dd2-handle.btn-yellow {
+  background: rgba(0, 0, 0, 0.05) !important;
+  border-right: 1px solid #fff;
+}
+.dd2-handle.btn-yellow:hover {
+  background: rgba(0, 0, 0, 0.08) !important;
+}
+.dd-dragel .dd2-handle.btn-yellow {
+  border-color: transparent #fff transparent transparent;
+}
+.dd-item > .dd2-handle .drag-icon {
+  display: none;
+}
+.dd-dragel > .dd-item > .dd2-handle .drag-icon {
+  display: inline;
+}
+.dd-dragel > .dd-item > .dd2-handle .normal-icon {
+  display: none;
+}
+
+.dd2-content[class*="btn-"],
+.dd2-handle.btn-yellow {
+  text-shadow: none !important;
+}

@@ -1,0 +1,1 @@
+@extends('_frontend.default.layout')

@@ -1,0 +1,4 @@
+    //Get File
+    function get_{{lower_name}}() {
+        return $this->belongsTo(\App\TrusCRUD\Core\Models\Files::class, '{{lower_name}}', 'uuid');
+    }

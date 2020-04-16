@@ -1,0 +1,4 @@
+    //Related {{class_name}}
+    function {{lower_name}}() {
+        return $this->{{type}}(App\{{class_name}}::class, '{{fk}}');
+    }

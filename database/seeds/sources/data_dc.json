@@ -1,0 +1,266 @@
+[{
+        "value": "1",
+        "text": "DC MITRA AGUS SODIKIN",
+        "dc_code": "AB"
+    },
+    {
+        "value": "2",
+        "text": "DC MITRA SULISTIAWAN",
+        "dc_code": "AA"
+    },
+    {
+        "value": "3",
+        "text": "DC MITRA ARIEF RAHMAN",
+        "dc_code": "AD"
+    },
+    {
+        "value": "4",
+        "text": "DC MITRA NANA SUTISNA",
+        "dc_code": "AH"
+    },
+    {
+        "value": "5",
+        "text": "DC MITRA JOKO HERMAWAN",
+        "dc_code": "AC"
+    },
+    {
+        "value": "6",
+        "text": "DC MITRA RICKYANTO",
+        "dc_code": "AI"
+    },
+    {
+        "value": "7",
+        "text": "DC MITRA VENCHE LALOAN",
+        "dc_code": "AE"
+    },
+    {
+        "value": "8",
+        "text": "DC MITRA DUDAN SUDIRMAN",
+        "dc_code": "AF"
+    },
+    {
+        "value": "9",
+        "text": "DC MITRA H.SOFYAN EFENDI",
+        "dc_code": "AG"
+    },
+    {
+        "value": "10",
+        "text": "DC MITRA DINI ANGGRAENI",
+        "dc_code": "AJ"
+    },
+    {
+        "value": "11",
+        "text": "DC MITRA EDO DAURI",
+        "dc_code": "AK"
+    },
+    {
+        "value": "12",
+        "text": "DC CIKEAS",
+        "dc_code": "01"
+    },
+    {
+        "value": "13",
+        "text": "DC CIBINONG",
+        "dc_code": "02"
+    },
+    {
+        "value": "14",
+        "text": "DC CIMANGGU",
+        "dc_code": "03"
+    },
+    {
+        "value": "15",
+        "text": "DC CIREMAI",
+        "dc_code": "04"
+    },
+    {
+        "value": "16",
+        "text": "DC CIAWI",
+        "dc_code": "05"
+    },
+    {
+        "value": "17",
+        "text": "DC CISEENG",
+        "dc_code": "06"
+    },
+    {
+        "value": "18",
+        "text": "DC LEUWILIANG",
+        "dc_code": "07"
+    },
+    {
+        "value": "19",
+        "text": "DC JONGGOL",
+        "dc_code": "08"
+    },
+    {
+        "value": "20",
+        "text": "DC BESAR PARUNG PANJANG",
+        "dc_code": "09"
+    },
+    {
+        "value": "21",
+        "text": "DC MITRA RIFFA EKAYANA",
+        "dc_code": "AL"
+    },
+    {
+        "value": "22",
+        "text": "DC MITRA NOVI YANTI",
+        "dc_code": "AM"
+    },
+    {
+        "value": "23",
+        "text": "DC MITRA NURLELA",
+        "dc_code": "AN"
+    },
+    {
+        "value": "24",
+        "text": "DC MITRA SYAWAL",
+        "dc_code": "AO"
+    },
+    {
+        "value": "25",
+        "text": "DC MITRA INDRA SUSIANTI",
+        "dc_code": "AP"
+    },
+    {
+        "value": "26",
+        "text": "DC MITRA MISBAHUDIN",
+        "dc_code": "AQ"
+    },
+    {
+        "value": "27",
+        "text": "DC MITRA ENDIN KURIADIN",
+        "dc_code": "AR"
+    },
+    {
+        "value": "28",
+        "text": "DC MITRA SYAMSUDIN",
+        "dc_code": "AW"
+    },
+    {
+        "value": "29",
+        "text": "DC MITRA WANGSA",
+        "dc_code": "AT"
+    },
+    {
+        "value": "30",
+        "text": "DC MITRA YENIH HERAWATI",
+        "dc_code": "AU"
+    },
+    {
+        "value": "31",
+        "text": "RUTE DELIVERY GT-CIOMAS",
+        "dc_code": "R1"
+    },
+    {
+        "value": "32",
+        "text": "RUTE DELIVERY GT-Leuwilliang",
+        "dc_code": "R2"
+    },
+    {
+        "value": "33",
+        "text": "RUTE DELIVERY GT-Gunung Putri",
+        "dc_code": "R3"
+    },
+    {
+        "value": "34",
+        "text": "RUTE DELIVERY GT-Bojong Gede",
+        "dc_code": "R4"
+    },
+    {
+        "value": "35",
+        "text": "DC MITRA VANCHE LALOAN 2",
+        "dc_code": "AV"
+    },
+    {
+        "value": "36",
+        "text": "RUTE DELIVERY GT-Citereup",
+        "dc_code": "R5"
+    },
+    {
+        "value": "41",
+        "text": "DC Mitra Hardi",
+        "dc_code": "AS"
+    },
+    {
+        "value": "42",
+        "text": "00",
+        "dc_code": "00"
+    },
+    {
+        "value": "43",
+        "text": "DC MITRA BAYU",
+        "dc_code": "AX"
+    },
+    {
+        "value": "44",
+        "text": "DC MITRA WAHRUDI",
+        "dc_code": "AY"
+    },
+    {
+        "value": "45",
+        "text": "RUTE DELIVERY GT-Sukamakmur",
+        "dc_code": "R7"
+    },
+    {
+        "value": "48",
+        "text": "RUTE DELIVERY GT-Cigombong",
+        "dc_code": "R6"
+    },
+    {
+        "value": "49",
+        "text": "HOREKA",
+        "dc_code": "HRK"
+    },
+    {
+        "value": "50",
+        "text": "DC MITRA RIKI NUR",
+        "dc_code": "AZ"
+    },
+    {
+        "value": "51",
+        "text": "VIP",
+        "dc_code": "VIP"
+    },
+    {
+        "value": "52",
+        "text": "DC MITRA SUHENDI",
+        "dc_code": "BA"
+    },
+    {
+        "value": "53",
+        "text": "DC MITRA NANANG",
+        "dc_code": "BB"
+    },
+    {
+        "value": "54",
+        "text": "DC MITRA TETI MULYATI",
+        "dc_code": "BC"
+    },
+    {
+        "value": "57",
+        "text": "-",
+        "dc_code": "-"
+    },
+    {
+        "value": "58",
+        "text": "DC MITRA ELISA",
+        "dc_code": "BD"
+    },
+    {
+        "value": "59",
+        "text": "RUTE DELIVERY GT-Cariu",
+        "dc_code": "R8"
+    },
+    {
+        "value": "60",
+        "text": "RUTE DELIVERY GT-Sukaraja",
+        "dc_code": "R9"
+    },
+    {
+        "value": "61",
+        "text": "DC MITRA AMBI RAHMAN",
+        "dc_code": "BE"
+    }
+]

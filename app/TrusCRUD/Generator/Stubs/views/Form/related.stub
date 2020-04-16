@@ -1,0 +1,11 @@
+
+            <!-- {{label}} -->
+            <div class="form-group col-md-12">
+              <label for="{{field}}">{{label}} <span class="text-danger">*</span></label>
+              <select name="{{field}}" id="{{field}}" selectpicker class="form-control">
+                <option value="">- Chosee -</option>
+                @foreach ((new App\{{class}})->get() as ${{class_lower}})
+                    <option value="{{${{class_lower}}->id}}">{{${{class_lower}}->name}}</option>
+                @endforeach
+              </select>
+            </div>

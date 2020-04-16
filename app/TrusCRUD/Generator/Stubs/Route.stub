@@ -1,0 +1,4 @@
+
+//Begin Route {{nameUndescore}}
+Route::resource('{{nameUndescore}}', '{{nameController}}');
+//End Route {{nameUndescore}}

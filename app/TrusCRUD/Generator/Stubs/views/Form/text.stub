@@ -1,0 +1,7 @@
+
+            <!-- {{label}} -->
+            <div class="form-group col-md-12">
+              <label for="{{field}}">{{label}} <span class="text-danger">*</span></label>
+              <textarea summernote name="{{field}}" class="form-control" id="{{field}}" placeholder="">{{isset($data) ? $data->{{field}}:''}}</textarea>
+            </div>
+            
