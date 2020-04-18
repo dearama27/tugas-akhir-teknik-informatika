@@ -13,6 +13,8 @@ class CreateSettingsTable extends Migration
      */
     public function up()
     {
+        Builder::defaultStringLength(191); // Update defaultStringLength
+
         Schema::create('settings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger("user_id");
