@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Schema\Builder;
 use Illuminate\Support\Facades\Schema;
 
 class CreateUsersTable extends Migration
@@ -13,6 +14,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        Builder::defaultStringLength(191); // Update defaultStringLength
         // Schema::defaultStringLength(191);
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
