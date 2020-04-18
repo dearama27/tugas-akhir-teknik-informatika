@@ -83,13 +83,8 @@
                 <div class="title">
                     {{config("app.name")}}<sup style="font-size: 3rem">v{{conf("version")}}</sup>
                 </div>
-                <small>Build with Laravel {{App::VERSION()}}</small>
-
-                <div class="links" style="margin-top: 3em">
-                    <a href="https://trosware.com/docs">Docs</a>
-                    <a href="https://blog.dani.work">Blog</a>
-                    <a href="https://www.dani.work">Developer</a>
-                </div>
+                {{-- <small>Build with Laravel {{App::VERSION()}}</small> --}}
+                <small>Tugas Akhir <b>Dea Anggi Rahmawati</b></small>
             </div>
         </div>
     </body>
