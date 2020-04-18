@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Database\Schema\Builder;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
@@ -28,6 +29,8 @@ class AppServiceProvider extends ServiceProvider
     {
         //Extend Validator Re-Captcha
         Validator::extend('recaptcha', 'App\\Validators\\ReCaptcha@validate');
+
+        Builder::defaultStringLength(191); // Update defaultStringLength
 
         //HTTPS Schames
         if(conf('force-https')) {

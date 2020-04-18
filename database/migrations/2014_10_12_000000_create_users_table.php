@@ -14,8 +14,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Builder::defaultStringLength(191); // Update defaultStringLength
-        // Schema::defaultStringLength(191);
+
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->uuid('uuid')->nullable();
