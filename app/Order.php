@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+
+    protected $fillable = [
+        'related_spkb'
+    ];
     
     //Related Customer
     function customer() {

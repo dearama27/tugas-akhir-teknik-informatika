@@ -62,7 +62,7 @@ class OrderSeeder extends Seeder
             //2
             Order::create([
                 "date_delivery" => gmdate('Y-m-d', time()+60*60*7),
-                "ttl_price" => $product->harga*5,
+                "ttl_price" => $product->harga*$val['qty'],
                 "ttl_qty" => $val['qty'],
                 "customer_id" => rand(1,6)
             ]);

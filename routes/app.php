@@ -11,11 +11,11 @@ Route::resource('product', 'ProductController');
 //End Route product
 
 //Begin Route spkb
+Route::prefix('spkb')->group(function() {
+    Route::get('/generate', 'SpkbController@generate')->name('spkb.generate');
+});
 Route::resource('spkb', 'SpkbController');
 
-Route::prefix('spkb')->group(function() {
-    Route::get('/generate', 'SpkbController@generate');
-});
 //End Route spkb
 
 //Begin Route spkb

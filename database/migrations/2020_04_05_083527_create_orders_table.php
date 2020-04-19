@@ -19,7 +19,9 @@ class CreateOrdersTable extends Migration
 			$table->date('date_delivery');
 			$table->integer('ttl_price');
 			$table->integer('ttl_qty');
-			$table->bigInteger('customer_id');
+            $table->bigInteger('customer_id');
+            
+			$table->integer('related_spkb')->default(0);
 
             $table->bigInteger('ttl_actual_qty')->default(0);
             $table->bigInteger('ttl_actual_total')->default(0);

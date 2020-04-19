@@ -28,7 +28,16 @@ class DeliveryController extends Controller
 
             $model = $model->where(DB::raw('LOWER(date_delivery)'), "LIKE", "%$serach%");
         }
-        
+
+        $user = auth()->user();
+        $role = $user->access_role_id;
+
+        if($role == 3) {
+            $model = $model->where('driver_id', $user->id);
+        }
+
+        $model = $model->orderBy('date_delivery', 'desc');
+
         $this->data['results'] = $model->paginate(10);
 
         return view($this->view.'.index', $this->data);
@@ -49,9 +58,10 @@ class DeliveryController extends Controller
     public function edit(Request $req, Spkb $model, $id) {
         
         
-        $data               = $model->find($id)->first();
+        $data               = Spkb::where('id', $id)->first();
+
         $this->data['data'] = $data;
-        $order_id = $req->get('order_id');
+        $order_id           = $req->get('order_id');
         
         if($order_id != '') {
             $spkbOrder           = SpkbOrder::where('order_id', $order_id)->first();;

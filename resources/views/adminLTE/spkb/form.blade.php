@@ -114,14 +114,14 @@ Form Spkb
             <!-- Ttl Price -->
             <div class="form-group col-md-6">
               <label for="ttl_price">Ttl Price <span class="text-danger">*</span></label>
-              <input autocomplete="off" name="ttl_price" type="text" class="form-control" id="ttl_price"
+              <input readonly autocomplete="off" name="ttl_price" type="text" class="form-control" id="ttl_price"
                 placeholder="" value="{{isset($data) ? number_format($data->ttl_price):''}}">
             </div>
 
             <!-- Ttl Qty -->
             <div class="form-group col-md-6">
               <label for="ttl_qty">Ttl Qty <span class="text-danger">*</span></label>
-              <input autocomplete="off" name="ttl_qty" type="number" class="form-control" id="ttl_qty" placeholder=""
+              <input readonly autocomplete="off" name="ttl_qty" type="number" class="form-control" id="ttl_qty" placeholder=""
                 value="{{isset($data) ? $data->ttl_qty:''}}">
             </div>
 

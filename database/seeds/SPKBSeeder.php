@@ -31,47 +31,47 @@ class SPKBSeeder extends Seeder
         // ]);
 
 
-        $data = [
-            [
-                'order_id' => rand(1,5),
-                'pic_id' => rand(1,5),
-            ],
-            [
-                'order_id' => rand(1,5),
-                'pic_id' => rand(1,5),
-            ],
-            [
-                'order_id' => rand(1,5),
-                'pic_id' => rand(1,5),
-            ],
-            [
-                'order_id' => rand(1,5),
-                'pic_id' => rand(1,5),
-            ],
-            [
-                'order_id' => rand(1,5),
-                'pic_id' => rand(1,5),
-            ],
-        ];
+        // $data = [
+        //     [
+        //         'order_id' => rand(1,5),
+        //         'pic_id' => rand(1,5),
+        //     ],
+        //     [
+        //         'order_id' => rand(1,5),
+        //         'pic_id' => rand(1,5),
+        //     ],
+        //     [
+        //         'order_id' => rand(1,5),
+        //         'pic_id' => rand(1,5),
+        //     ],
+        //     [
+        //         'order_id' => rand(1,5),
+        //         'pic_id' => rand(1,5),
+        //     ],
+        //     [
+        //         'order_id' => rand(1,5),
+        //         'pic_id' => rand(1,5),
+        //     ],
+        // ];
 
-        foreach($data as $key=>$val) {
+        // foreach($data as $key=>$val) {
 
-            $order = Order::where('id', $val['order_id'])->first();
+        //     $order = Order::where('id', $val['order_id'])->first();
 
-            Spkb::create([
-                "code"              => $order->customer->dc->dc_code.gmdate('dmy', time()+60*60*7).str_pad('1', 4, '0', STR_PAD_LEFT),
-                "date_delivery"     => gmdate('Y-m-d', time()+60*60*7),
-                "pic_id"            => $val['pic_id'],
-                "driver_id"         => 4,
-                "ttl_order"         => 1,
-                "ttl_price"         => $order->ttl_price,
-                "ttl_qty"           => $order->ttl_qty,
-            ]);
+        //     Spkb::create([
+        //         "code"              => $order->customer->dc->dc_code.gmdate('dmy', time()+60*60*7).str_pad('1', 4, '0', STR_PAD_LEFT),
+        //         "date_delivery"     => gmdate('Y-m-d', time()+60*60*7),
+        //         "pic_id"            => $val['pic_id'],
+        //         "driver_id"         => 4,
+        //         "ttl_order"         => 1,
+        //         "ttl_price"         => $order->ttl_price,
+        //         "ttl_qty"           => $order->ttl_qty,
+        //     ]);
     
-            SpkbOrder::create([
-                'spkb_id' => $key+1,
-                'order_id' => $order->id
-            ]);
-        }
+        //     SpkbOrder::create([
+        //         'spkb_id' => $key+1,
+        //         'order_id' => $order->id
+        //     ]);
+        // }
     }
 }

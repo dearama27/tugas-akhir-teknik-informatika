@@ -6,6 +6,7 @@ use App\DistributionCenter;
 use App\Order;
 use Illuminate\Http\Request;
 use App\Spkb;
+use App\SpkbOrder;
 use App\User;
 use Illuminate\Support\Facades\DB;
 
@@ -46,7 +47,7 @@ class SpkbController extends Controller
     }
 
     public function edit(Spkb $model, $id) {
-        $this->data['data']     = $model->find($id)->first();
+        $this->data['data']     = $model->where('id', $id)->first();
 
         $this->data['driver']   = User::where('access_role_id', 3)->get();
         $this->data['dc']       = DistributionCenter::get();
@@ -58,8 +59,50 @@ class SpkbController extends Controller
         $date_order        = gmdate('Y-m-d', time()+60*60*7);
 
         foreach($distribution_zone as $dc) {
-            $order = Order::where('');
+            $date   = gmdate('Y-m-d', time()+60*60*7);
+
+            $order = Order::whereHas('customer', function($q) use($dc) {
+                $q->where('distribution_center_id', $dc->id);
+            })->where(['date_delivery'=>$date,'related_spkb' => 0])->get();
+
+            if($order->count() > 0) {
+
+                $count  = Spkb::where('date_delivery', $date)->get()->count();
+                $code   = $dc->dc_code.gmdate('Ymd', time()+60*60*7).str_pad($count, 4, '0', STR_PAD_LEFT);
+
+                $ttl_order = 0;
+                $ttl_price = 0;
+                $ttl_qty   = 0;
+
+                foreach($order as $o) {
+                    $ttl_order  += 1;
+                    $ttl_price  += $o->ttl_qty;
+                    $ttl_qty    += $o->ttl_price;
+                }
+
+                $header["code"]          = $code;
+                $header["date_delivery"] = $date;
+                $header["driver_id"]     = 0;
+                $header["pic_id"]        = 0;
+                $header["ttl_order"]     = $ttl_order;
+                $header["ttl_price"]     = $ttl_price;
+                $header["ttl_qty"]       = $ttl_qty;
+
+                $spkb = Spkb::create($header);
+
+                foreach($order as $o) {
+                    SpkbOrder::create([
+                        'spkb_id' => $spkb->id,
+                        'order_id' => $o->id,
+                    ]);
+
+                    $o->update(['related_spkb' => 1]);
+                }
+
+            }
         }
+
+        return redirect()->to(route('spkb.index'));
     }
 
 
@@ -71,8 +114,9 @@ class SpkbController extends Controller
                 $model = Spkb::find($req->id);
             }
 
-			$model->date_delivery      = $req->date_delivery;
+			$model->date_delivery   = $req->date_delivery;
 			$model->driver_id       = $req->driver_id;
+			$model->pic_id          = $req->pic_id;
 			$model->ttl_order       = $req->ttl_order;
 			$model->ttl_price       = $req->ttl_price;
 			$model->ttl_qty         = $req->ttl_qty;

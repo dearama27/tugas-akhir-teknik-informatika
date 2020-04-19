@@ -22,7 +22,7 @@ SPKB
             {{-- <a href="{{route($resource.'.create')}}" class="btn btn-primary btn-sm float-left">
                 <i class="fa fa-plus"></i> Create
             </a> --}}
-            <a href="{{route($resource.'.create')}}" class="btn btn-warning btn-sm float-left">
+            <a href="{{route($resource.'.generate')}}" class="btn btn-warning btn-sm float-left">
                 <i class="fa fa-plus"></i> Generate SPKB
             </a>
             </div>
@@ -73,8 +73,8 @@ SPKB
                     <td>{{ $no }}</td>
 										<td>{{ $item->code }}</td>
 										<td>{{ $item->date_delivery }}</td>
-										<td>{{ $item->user_driver->name }}</td>
-										<td>{{ $item->dc->name }}</td>
+										<td>{{ $item->user_driver->name ?? '' }}</td>
+										<td>{{ $item->dc->name ?? '' }}</td>
 										<td>{{ $item->ttl_price }}</td>
 										<td>{{ $item->ttl_qty }}</td>
 

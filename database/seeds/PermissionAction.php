@@ -18,7 +18,7 @@ class PermissionAction extends Seeder
         AccessAction::create(["name" => "Show", "supfix"   => "show"]);
         AccessAction::create(["name" => "List", "supfix"   => "index"]);
         AccessAction::create(["name" => "Insert", "supfix" => "create"]);
-        AccessAction::create(["name" => "Update", "supfix" => "update"]);
+        AccessAction::create(["name" => "Edit", "supfix" => "edit"]);
         AccessAction::create(["name" => "Delete", "supfix" => "delete"]);
         AccessAction::create(["name" => "Print", "supfix" => "print"]);
 
@@ -41,7 +41,7 @@ class PermissionAction extends Seeder
             "route_name"    => "product.index",
             "url"           => "/product",
             "icon"          => "fas fa-tags",
-            "actions"       => '["show","index","create"]',
+            "actions"       => '["show","index","create", "edit", "delete"]',
             "order"         => 2,
         ]);
 
@@ -52,7 +52,7 @@ class PermissionAction extends Seeder
             "route_name"    => "customer.index",
             "url"           => "/customer",
             "icon"          => "fas fa-users",
-            "actions"       => '["show","index","create"]',
+            "actions"       => '["show","index","create", "edit", "delete"]',
             "order"         => 3,
         ]);
 
@@ -63,7 +63,7 @@ class PermissionAction extends Seeder
             "route_name"    => "order.index",
             "url"           => "/order",
             "icon"          => "fab fa-opencart",
-            "actions"       => '["show","index","create"]',
+            "actions"       => '["show","index","create", "edit", "delete"]',
             "order"         => 4,
         ]);
 
@@ -74,7 +74,7 @@ class PermissionAction extends Seeder
             "route_name"    => "",
             "url"           => "#",
             "icon"          => "fab fa-buffer",
-            "actions"       => '["show","index","create"]',
+            "actions"       => '["show","index","create", "edit", "delete"]',
             "order"         => 5,
         ]);
 
@@ -86,7 +86,7 @@ class PermissionAction extends Seeder
             "route_name"    => "spkb.index",
             "url"           => "/spkb",
             "icon"          => "fab fa-buffer",
-            "actions"       => '["show","index","create"]',
+            "actions"       => '["show","index","create", "edit", "delete"]',
             "order"         => 6,
         ]);
 
@@ -98,7 +98,7 @@ class PermissionAction extends Seeder
             "route_name"    => "delivery.index",
             "url"           => "/delivery",
             "icon"          => "fas fa-truck-moving",
-            "actions"       => '["show","index","create"]',
+            "actions"       => '["show","index","create", "edit", "delete"]',
             "order"         => 7,
         ]);
 
@@ -109,7 +109,7 @@ class PermissionAction extends Seeder
             "route_name"    => "report.index",
             "url"           => "/report",
             "icon"          => "fa fa-copy",
-            "actions"       => '["show","index","create"]',
+            "actions"       => '["show","index","create", "edit", "delete"]',
             "order"         => 8,
         ]);
 
@@ -120,7 +120,7 @@ class PermissionAction extends Seeder
             "route_name"    => "distribution_center.index",
             "url"           => "/distribution_center",
             "icon"          => "fas fa-people-carry",
-            "actions"       => '["show","index","create"]',
+            "actions"       => '["show","index","create", "edit", "delete"]',
             "order"         => 2,
         ]);
 
@@ -177,6 +177,11 @@ class PermissionAction extends Seeder
         ]);
         AccessRoleToMenu::create([
             "access_action_suffix" => "create",
+            "access_menu_id" => 7,
+            "access_role_id" => 3,
+        ]);
+        AccessRoleToMenu::create([
+            "access_action_suffix" => "edit",
             "access_menu_id" => 7,
             "access_role_id" => 3,
         ]);

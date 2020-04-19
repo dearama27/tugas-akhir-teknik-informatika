@@ -13,7 +13,7 @@
                 <p>Users</p>
             </a>
         </li>
-        @if (false)
+        @if (true)
         <li class="nav-header">Super Admin</li>
 
         <li class="nav-item has-treeview">

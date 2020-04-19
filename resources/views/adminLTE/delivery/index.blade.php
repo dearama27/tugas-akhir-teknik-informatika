@@ -73,8 +73,8 @@ Pengiriman
                     <td>{{ $no }}</td>
 										<td>{{ $item->code }}</td>
 										<td>{{ $item->date_delivery }}</td>
-										<td>{{ $item->user_driver->name }}</td>
-										<td>{{ $item->user_driver->name }}</td>
+										<td>{{ $item->user_driver->name ?? '' }}</td>
+										<td>{{ $item->user_driver->name ?? '' }}</td>
 										<td>{{ $item->ttl_qty }}</td>
 										<td>{{ number_format($item->ttl_price) }}</td>
 
