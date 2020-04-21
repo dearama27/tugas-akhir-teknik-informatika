@@ -17,7 +17,9 @@ class CreateSpkbOrdersTable extends Migration
             
 			$table->id();
 			$table->bigInteger('spkb_id');
-			$table->bigInteger('order_id');
+            $table->bigInteger('order_id');
+            
+			$table->integer('delivery_status')->default(0);
 
             $table->timestamps();
         });

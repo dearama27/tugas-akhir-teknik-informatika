@@ -21,10 +21,11 @@ class CreateOrdersTable extends Migration
 			$table->integer('ttl_qty');
             $table->bigInteger('customer_id');
             
-			$table->integer('related_spkb')->default(0);
-
+            
             $table->bigInteger('ttl_actual_qty')->default(0);
             $table->bigInteger('ttl_actual_total')->default(0);
+            
+			$table->integer('related_spkb')->default(0);
 
             $table->timestamps();
         });

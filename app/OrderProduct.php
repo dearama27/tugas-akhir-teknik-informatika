@@ -12,6 +12,8 @@ class OrderProduct extends Model
         "price",
         "qty",
         "total",
+        "actual_qty",
+        "actual_total",
     ];
     
     function product() {

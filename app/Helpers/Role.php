@@ -16,7 +16,8 @@ class Role {
      */
     protected static $bypass = [
         //Route Name
-        "users.upload_avatar"
+        "users.upload_avatar",
+        "spkb.generate",
     ];
 
     public static function getAction($role_id, $menu_id, $action) {

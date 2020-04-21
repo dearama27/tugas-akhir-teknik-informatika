@@ -18,11 +18,19 @@ class CheckPermission
     {
         $routeName = explode('.', $request->route()->getName());
 
-        // dd($routeName);
 
         if(isset($routeName[1])) {
-            $hasRole =  Role::isAllow($routeName[1]);
-            // dd($hasRole);
+            $data = [
+                "store" => "create",
+                "create" => "create",
+                "edit" => "edit",
+                "destroy" => "destroy",
+                "show" => "show",
+                "index" => "index",
+            ];
+
+            $hasRole =  isset($data[$routeName[1]]) ? Role::isAllow($data[$routeName[1]]):true;
+
             if($hasRole) {
                 return $next($request);
             } else {

@@ -21,7 +21,7 @@ class UsersSeeder extends Seeder
             'phone'             => '085717453300',
             'access_role_id'    => 1,
             'email'             => 'admin@mail.com',
-            'password'          => bcrypt('password'),
+            'password'          => bcrypt('12345'),
         ]);
 
         User::create([
@@ -30,7 +30,7 @@ class UsersSeeder extends Seeder
             'phone'             => '085777777777',
             'access_role_id'    => 2,
             'email'             => 'admin.delivery@mail.com',
-            'password'          => bcrypt('password'),
+            'password'          => bcrypt('12345'),
         ]);
 
         //Driver
@@ -40,7 +40,7 @@ class UsersSeeder extends Seeder
             'phone'             => '087887878788',
             'access_role_id'    => 3,
             'email'             => 'driver1@mail.com',
-            'password'          => bcrypt('password'),
+            'password'          => bcrypt('12345'),
         ]);
         User::create([
             'uuid'              => Str::uuid(),
@@ -48,7 +48,7 @@ class UsersSeeder extends Seeder
             'phone'             => '087887878788',
             'access_role_id'    => 3,
             'email'             => 'driver2@mail.com',
-            'password'          => bcrypt('password'),
+            'password'          => bcrypt('12345'),
         ]);
         User::create([
             'uuid'              => Str::uuid(),
@@ -56,7 +56,7 @@ class UsersSeeder extends Seeder
             'phone'             => '087887878788',
             'access_role_id'    => 3,
             'email'             => 'driver3@mail.com',
-            'password'          => bcrypt('password'),
+            'password'          => bcrypt('12345'),
         ]);
         User::create([
             'uuid'              => Str::uuid(),
@@ -64,7 +64,7 @@ class UsersSeeder extends Seeder
             'phone'             => '087887878788',
             'access_role_id'    => 3,
             'email'             => 'driver4@mail.com',
-            'password'          => bcrypt('password'),
+            'password'          => bcrypt('12345'),
         ]);
 
         User::create([
@@ -73,7 +73,7 @@ class UsersSeeder extends Seeder
             'phone'             => '087887878788',
             'access_role_id'    => 4,
             'email'             => 'finance@mail.com',
-            'password'          => bcrypt('password'),
+            'password'          => bcrypt('12345'),
         ]);
         User::create([
             'uuid'              => Str::uuid(),
@@ -81,7 +81,7 @@ class UsersSeeder extends Seeder
             'phone'             => '08168877263',
             'access_role_id'    => 5,
             'email'             => 'manops@mail.com',
-            'password'          => bcrypt('password'),
+            'password'          => bcrypt('12345'),
         ]);
 
     }

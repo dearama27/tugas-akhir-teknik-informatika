@@ -17,7 +17,9 @@ Pengiriman
       <form role="form" method="POST" action="{{ route($resource.'.store') }}?input-delivery=true">
         @csrf
 
-        <input type="hidden" name="id" value="{{isset($data) ? $data->id:''}}" />
+        <input type="hidden" name="id" value="{{isset($order) ? $order->id:''}}" />
+        <input id="delivery_status" type="hidden" name="delivery_status" value="{{isset($order) ? $order->delivery_status:0}}" />
+        <input id="order_id" type="hidden" name="order_id" value="{{isset($order) ? $order->order_id:0}}" />
 
         <div class="card-body">
           <h4>Data Product</h4>
@@ -55,10 +57,13 @@ Pengiriman
                 <td style="vertical-align: middle;" class="price" data-value="{{$item->price}}">Rp. {{ number_format($item->price) }}</td>
                 <td style="vertical-align: middle;">{{ $item->qty }}</td>
                 <td style="vertical-align: middle;">Rp. {{ number_format($item->qty*$item->price) }}</td>
+                
                 <td style="vertical-align: middle;">
-                  <input type="hidden" name="product[{{$key}}][order_id]" class="form-control " value="{{$item->order_id}}"/>
+                  <input type="hidden" name="product[{{$key}}][order_product_id]" class="form-control " value="{{$item->id}}"/>
+                  {{-- <input type="hidden" name="product[{{$key}}][order_id]" class="form-control " value="{{$item->order_id}}"/> --}}
                   <input name="product[{{$key}}][actual_qty]" class="form-control actual_qty" />
                 </td>
+
                 <td style="vertical-align: middle;"><input data-currency name="product[{{$key}}][actual_total]" class="form-control actual_total" readonly/></td>
 
               </tr>
@@ -76,8 +81,10 @@ Pengiriman
           <div class="btn-group">
             <button class="btn btn-secondary" onclick="history.back()"><i class="fa fa-arrow-left"></i>
               Back</button>
-            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+            <button data-status="1" type="submit" class="btn btn-primary set-status"><i class="fa fa-save"></i> Save</button>
           </div>
+
+          <button data-status="2" type="button" id="cancel-delivery" class="btn btn-warning set-status"><i class="fa fa-redo"></i> Batalkan Pengiriman</button>
         </div>
 
       </form>
@@ -101,6 +108,27 @@ $('[data-currency]').inputmask({
     'digitsOptional': false,
     'prefix': ' Rp. ',
     'placeholder': '0'
+  });
+
+  $('.set-status').click(function() {
+    let status = $(this).data('status');
+    $('#delivery_status').val(status)
+  });
+
+  $('#cancel-delivery').click(function() {
+    swal.fire({
+      title: "Anda yakin..?",
+      text: 'Batalkan Pengiriman ini.',
+      type: 'warning',
+      showCancelButton: true,
+      cancelButtonText: 'Tidak',
+      confirmButtonText: 'Ya',
+    }).then(btn => {
+      if(btn.value) {
+        let status = $(this).data('status');
+        $('[role="form"]')[0].submit()
+      }
+    })
   })
 
   $('.actual_qty').keyup(function() {
