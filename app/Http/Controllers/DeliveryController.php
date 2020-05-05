@@ -14,6 +14,7 @@ class DeliveryController extends Controller
 
     protected $view  = 'delivery';
 
+    // Initialization
     function __construct()
     {
         parent::__construct();

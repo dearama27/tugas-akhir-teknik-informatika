@@ -13,6 +13,8 @@ class CreateCustomersTable extends Migration
      */
     public function up()
     {
+
+        //Membuat Table Customer
         Schema::create('customers', function (Blueprint $table) {
             
 			$table->id();

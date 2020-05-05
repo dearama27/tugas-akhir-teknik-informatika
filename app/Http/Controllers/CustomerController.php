@@ -12,6 +12,7 @@ class CustomerController extends Controller
 
     protected $view  = 'customer';
 
+    //Initialization
     function __construct()
     {
         parent::__construct();
