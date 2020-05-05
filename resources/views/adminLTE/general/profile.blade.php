@@ -54,47 +54,6 @@ $user = Auth::user();
                 <!-- /.card -->
 
 
-                <!-- About Me Box -->
-                <div class="card card-primary card-outline d-none d-md-block">
-                    <div class="card-header">
-                        <h3 class="card-title">About Me</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <strong><i class="fas fa-book mr-1"></i> Education</strong>
-
-                        <p class="text-muted">
-                            B.S. in Computer Science from the University of Tennessee at Knoxville
-                        </p>
-
-                        <hr>
-
-                        <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
-
-                        <p class="text-muted">Malibu, California</p>
-
-                        <hr>
-
-                        <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
-
-                        <p class="text-muted">
-                            <span class="tag tag-danger">UI Design</span>
-                            <span class="tag tag-success">Coding</span>
-                            <span class="tag tag-info">Javascript</span>
-                            <span class="tag tag-warning">PHP</span>
-                            <span class="tag tag-primary">Node.js</span>
-                        </p>
-
-                        <hr>
-
-                        <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
-
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum
-                            enim neque.</p>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
             </div>
             <!-- /.col -->
             <div class="col-md-9">
@@ -386,41 +345,6 @@ $user = Auth::user();
                                         <label for="password">@lang('user.text_password')</label>
                                         <input autocomplete="off" name="password" type="password" class="form-control"
                                             id="password" placeholder="********">
-                                    </div>
-
-                                    <div class="form-group col-12">
-                                        <div class="row">
-
-                                            <div class="col-md-4">
-                                                @if (has_provider($user->id, 'facebook') ==0)
-                                                <a href="{{route('auth.provider', ['provider' => 'facebook'])}}?page=profile"
-                                                    class="btn btn-primary btn-block" type="button"><i
-                                                        class="fab fa-facebook mr-2"></i>Connect to
-                                                    facebook</a>
-                                                @else
-                                                <button class="btn btn-primary btn-block" type="button"><i
-                                                        class="fab fa-facebook mr-2"></i> Facebook Connected</button>
-                                                @endif
-                                            </div>
-                                            <div class="col-md-4">
-                                                @if (has_provider($user->id, 'google') ==0)
-                                                <a href="{{route('auth.provider', ['provider' => 'google'])}}?page=profile"
-                                                    class="btn btn-danger btn-block" type="button"><i
-                                                        class="fab fa-google mr-2"></i>Connect to
-                                                    Google</a>
-                                                @else
-                                                <button class="btn btn-danger btn-block" type="button"><i
-                                                        class="fab fa-google mr-2"></i>Google Connected</button>
-
-                                                @endif
-
-                                            </div>
-                                            <div class="col-md-4">
-                                                <button class="btn btn-secondary btn-block" type="button"><i
-                                                        class="fab fa-github mr-2"></i>Connect to
-                                                    Github</button>
-                                            </div>
-                                        </div>
                                     </div>
 
                                 </form>

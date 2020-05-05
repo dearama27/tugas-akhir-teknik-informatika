@@ -19,20 +19,20 @@ class CustomerSeeder extends Seeder
         
         foreach($toArray->data as $cust) {
 
-            if($no <= 10) {
-                Customer::create([
-                    'customer_code' => 'MBS-C'.str_pad($no, 4, "0", STR_PAD_LEFT),
-                    'name'    => $cust->name,
-                    'address' => $cust->address,
-                    'lat'     => $cust->lat,
-                    'lng'     => $cust->lng,
-                    'mobile_phone' => substr($cust->mobile_phone,0,9).'999',
-                    'distribution_center_id' => rand(1,5),
-                    'join_at' => gmdate('Y-m-d', time()+60*60*7),
-                ]);
-            } else {
-            break;
-            }
+            Customer::create([
+                'customer_code' => 'MBS-C'.str_pad($no, 4, "0", STR_PAD_LEFT),
+                'name'    => $cust->name,
+                'address' => $cust->address,
+                'lat'     => $cust->lat,
+                'lng'     => $cust->lng,
+                'mobile_phone' => substr($cust->mobile_phone,0,9).'999',
+                'distribution_center_id' => rand(1,5),
+                'join_at' => gmdate('Y-m-d', time()+60*60*7),
+            ]);
+            // if($no <= 10) {
+            // } else {
+            // break;
+            // }
             $no++;
         }
     }

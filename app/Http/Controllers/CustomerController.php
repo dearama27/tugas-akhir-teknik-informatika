@@ -20,13 +20,14 @@ class CustomerController extends Controller
         $this->view             = $this->template.$this->view;
     }
 
+    //Index List Customer
     public function index(Customer $model, Request $req) {
 
         if($req->get('search') != '') {
 
             $serach = strtolower($req->get('search'));
 
-            $model = $model->where(DB::raw('LOWER(name)'), "LIKE", "%$serach%");
+            $model = $model->where(DB::raw("CONCAT(LOWER(name))"), "LIKE", "%$serach%");
         }
         
         $this->data['results'] = $model->orderBy('updated_at', 'desc')->paginate(10);
@@ -34,6 +35,7 @@ class CustomerController extends Controller
         return view($this->view.'.index', $this->data);
     }
 
+    //Form Add Customer
     public function create() {
         $this->data['dc'] = DistributionCenter::get();
 

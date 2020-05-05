@@ -27,6 +27,7 @@ class ReportController extends Controller
 
             $model = $model->where(DB::raw('LOWER(date_delivery)'), "LIKE", "%$serach%");
         }
+        $model = $model->where('driver_id', '<>', 'NULL')->orderBy('date_delivery', 'desc');
         
         $this->data['results'] = $model->paginate(10);
 

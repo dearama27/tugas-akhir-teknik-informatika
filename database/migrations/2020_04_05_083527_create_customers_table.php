@@ -17,11 +17,11 @@ class CreateCustomersTable extends Migration
             
 			$table->id();
 			$table->string('name');
-			$table->string('address');
+			$table->string('address')->nullable();
 			$table->string('customer_code');
-			$table->string('mobile_phone');
-			$table->string('lat');
-            $table->string('lng');
+			$table->string('mobile_phone')->nullable();
+			$table->string('lat')->nullable();
+            $table->string('lng')->nullable();
             
             $table->bigInteger('distribution_center_id')->default(0);
             

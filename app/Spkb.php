@@ -21,6 +21,20 @@ class Spkb extends Model
         return $this->hasMany(SpkbOrder::class, 'spkb_id');
     }
 
+    function total_actual($detailArray) {
+        $qty = 0;
+        $price = 0;
+        foreach($detailArray as $spkb) {
+            $qty    += $spkb->order->ttl_actual_qty;
+            $price  += $spkb->order->ttl_actual_total;
+        }
+
+        return [
+            "qty" => $qty,
+            "price" => $price,
+        ];
+    }
+
     function user_driver() {
         return $this->belongsTo(User::class, 'driver_id');
     }

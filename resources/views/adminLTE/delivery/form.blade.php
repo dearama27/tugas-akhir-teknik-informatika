@@ -61,17 +61,20 @@ Pengiriman
                 <td style="vertical-align: middle;">
                   <input type="hidden" name="product[{{$key}}][order_product_id]" class="form-control " value="{{$item->id}}"/>
                   {{-- <input type="hidden" name="product[{{$key}}][order_id]" class="form-control " value="{{$item->order_id}}"/> --}}
-                  <input name="product[{{$key}}][actual_qty]" class="form-control actual_qty" />
+                  <input name="product[{{$key}}][actual_qty]" class="form-control actual_qty" value="{{$item->actual_qty}}"/>
                 </td>
 
-                <td style="vertical-align: middle;"><input data-currency name="product[{{$key}}][actual_total]" class="form-control actual_total" readonly/></td>
+                <td style="vertical-align: middle;">
+                  <input data-currency name="product[{{$key}}][actual_total]" class="form-control actual_total" value="{{$item->actual_total}}" readonly/>
+                </td>
 
               </tr>
               @endforeach
+
               <tr>
                 <td class="text-right" colspan="5">Total Actual</td>
-                <td><input type="text" class="form-control ttl_actual_qty" name="ttl_actual_qty" /></td>
-                <td><input data-currency type="text" class="form-control ttl_actual_total" name="ttl_actual_total" /></td>
+                <td><input type="text" class="form-control ttl_actual_qty" name="ttl_actual_qty" value="{{$order->order->ttl_actual_qty}}" /></td>
+                <td><input data-currency type="text" class="form-control ttl_actual_total" name="ttl_actual_total" value="{{$order->order->ttl_actual_total}}" /></td>
             </tbody>
           </table>
         </div>
@@ -81,10 +84,14 @@ Pengiriman
           <div class="btn-group">
             <button class="btn btn-secondary" onclick="history.back()"><i class="fa fa-arrow-left"></i>
               Back</button>
+            @if ($order->delivery_status == 0)
             <button data-status="1" type="submit" class="btn btn-primary set-status"><i class="fa fa-save"></i> Save</button>
+            @endif
           </div>
 
+          @if ($order->delivery_status == 0)
           <button data-status="2" type="button" id="cancel-delivery" class="btn btn-warning set-status"><i class="fa fa-redo"></i> Batalkan Pengiriman</button>
+          @endif
         </div>
 
       </form>

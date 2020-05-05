@@ -38,7 +38,7 @@ class DeliveryController extends Controller
             $model = $model->where('driver_id', $user->id);
         }
 
-        $model = $model->orderBy('date_delivery', 'desc');
+        $model = $model->where('driver_id', '<>', 'NULL')->orderBy('date_delivery', 'desc');
 
         $this->data['results'] = $model->paginate(10);
 
@@ -53,36 +53,10 @@ class DeliveryController extends Controller
 
     }
 
-    private function store_delivery(Request $req) {
-
-        try {
-            DB::beginTransaction();
-
-            $spkbOrder                  = SpkbOrder::where('id', $req->id);
-            $spkbOrder->delivery_status = $req->delivery_status;
-            $spkbOrder->save();
-
-            $order                   = Order::where('id', $req->order_id);
-            $order->ttl_actual_qty   = $req->ttl_actual_qty;
-            $order->ttl_actual_total = $this->getInt($req->ttl_actual_total);
-
-            foreach($req->product as $prod) {
-                OrderProduct::update(['id' => $prod['order_product_id']], [
-                    "actual_qty" => $prod['actual_qty'],
-                    "actual_total" => $this->getInt($prod['actual_total'])
-                ]);
-            }
-
-        } catch (\Throwable $th) {
-            DB::rollBack();
-        }
-    }
 
     public function edit(Request $req, Spkb $model, $id) {
-        
-        
         $data               = Spkb::where('id', $id)->first();
-
+    
         $this->data['data'] = $data;
         $order_id           = $req->get('order_id');
         
@@ -100,11 +74,44 @@ class DeliveryController extends Controller
     }
 
 
+    private function store_delivery(Request $req) {
+
+        try {
+            DB::beginTransaction();
+
+            SpkbOrder::where('id', $req->id)->update(["delivery_status" => $req->delivery_status]);
+
+            //Update Data Order
+            Order::where('id', $req->order_id)->update([
+               "ttl_actual_qty" => $req->ttl_actual_qty,
+               "ttl_actual_total" => $this->getInt($req->ttl_actual_total) 
+            ]);
+
+            foreach($req->product as $prod) {
+                OrderProduct::where(['id' => $prod['order_product_id']])->update([
+                    "actual_qty"   => $prod['actual_qty'],
+                    "actual_total" => $this->getInt($prod['actual_total'])
+                ]);
+            }
+            
+            $status = 'success';
+            $message = 'Berhasil disimpan.';
+            
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            dd($th);
+            $status = 'error';
+            $message = $th->getMessage().' '.$th->getLine();
+        }
+
+        return redirect($this->base)->with('status', $status)->with('message', $message);
+    }
 
     public function store(Spkb $model, Request $req) {
 
         if($req->get('input-delivery')) {
-            $this->store_delivery($req);
+            return $this->store_delivery($req);
         } else {
     
             try {   
@@ -118,7 +125,6 @@ class DeliveryController extends Controller
                 $model->ttl_order      = $req->ttl_order;
                 $model->ttl_price      = $req->ttl_price;
                 $model->ttl_qty        = $req->ttl_qty;
-    
     
                 $model->save();
     

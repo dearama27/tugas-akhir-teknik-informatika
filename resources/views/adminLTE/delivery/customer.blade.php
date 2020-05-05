@@ -73,10 +73,12 @@ Data Customer SPKB
               <td style="vertical-align: middle">{{ $item->join_at }}</td>
   
               <td style="vertical-align: middle">
-                @if(!$item->deleted_at)
+                @if(!$res->delivery_status)
                 <span class="badge bg-warning">Belum Dikirim</span>
+                @elseif($res->delivery_status == 1)
+                <span class="badge bg-success">Terkirim</span>
                 @else
-                <span class="badge bg-danger">Deleted</span>
+                <span class="badge bg-danger">Dibatalkan</span>
                 @endif
               </td>
             </tr>
