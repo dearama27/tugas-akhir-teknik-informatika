@@ -124,7 +124,18 @@ class PermissionAction extends Seeder
             "order"         => 2,
         ]);
 
-        for($i = 1; $i <= 10; $i++) {
+        AccessMenu::create([ //1
+            "uuid"          => Str::uuid(),
+            "title"         => "Users",
+            "description"   => "",
+            "route_name"    => "users.index",
+            "url"           => "/users",
+            "icon"          => "fas fa-users",
+            "actions"       => '["show","index","create", "edit", "delete"]',
+            "order"         => 10,
+        ]);
+
+        for($i = 1; $i <= 11; $i++) {
             AccessRoleToMenu::create([
                 "access_action_suffix" => "show",
                 "access_menu_id" => $i,

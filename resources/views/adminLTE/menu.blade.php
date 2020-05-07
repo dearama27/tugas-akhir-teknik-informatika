@@ -5,15 +5,15 @@
             with font-awesome or any other icon font library -->
         {{--
         <li class="nav-header">Main Menu</li> --}} 
-        {{-- @php $role_id = Auth::user()->access_role_id; $menu = Role::buildMenu($role_id); @endphp {!! $menu !!} @if ($role_id == 1) --}}
         @php $role_id = Auth::user()->access_role_id; $menu = Role::buildMenu($role_id); @endphp {!! $menu !!}
-        <li class="nav-item">
+        {{-- @php $role_id = Auth::user()->access_role_id; $menu = Role::buildMenu($role_id); @endphp {!! $menu !!} --}}
+        {{-- <li class="nav-item">
             <a href="{{route('users.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>Users</p>
             </a>
-        </li>
-        @if (true)
+        </li> --}}
+        @if ($role_id == 1)
         <li class="nav-header">Super Admin</li>
 
         <li class="nav-item has-treeview">
