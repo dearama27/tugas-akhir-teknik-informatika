@@ -75,12 +75,17 @@ class DeliveryController extends Controller
     }
 
 
+    //Save Delivery
     private function store_delivery(Request $req) {
 
         try {
             DB::beginTransaction();
 
-            SpkbOrder::where('id', $req->id)->update(["delivery_status" => $req->delivery_status]);
+            //Update Status Delivery di table spkb_order
+            SpkbOrder::where('id', $req->id)->update([
+                "delivery_status" => $req->delivery_status,
+                "keterangan"      => $req->keterangan
+            ]);
 
             //Update Data Order
             Order::where('id', $req->order_id)->update([
@@ -101,12 +106,11 @@ class DeliveryController extends Controller
             DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();
-            dd($th);
             $status = 'error';
             $message = $th->getMessage().' '.$th->getLine();
         }
 
-        return redirect($this->base)->with('status', $status)->with('message', $message);
+        return redirect()->to(route('delivery.edit', ['delivery' => $req->id]))->with('status', $status)->with('message', $message);
     }
 
     public function store(Spkb $model, Request $req) {

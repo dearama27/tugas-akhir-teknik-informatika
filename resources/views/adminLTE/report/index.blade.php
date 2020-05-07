@@ -28,7 +28,7 @@ Laporan
       </div>
       <div class="card-footer">
           <button style="width: 150px" class="btn btn-primary"><i class="fa fa-eye"></i> Filter</button>
-          <button style="width: 150px" class="btn btn-danger"><i class="fa fa-print"></i> Print</button>
+          <a target="_blank" href="{{route('report.print')}}" style="width: 150px" class="btn btn-danger"><i class="fa fa-print"></i> Print</a>
       </div>
     </div>
     <div class="card">
@@ -51,23 +51,28 @@ Laporan
       </div>
       <!-- /.card-header -->
       <div class="card-body p-0">
-        <div class="table-responsive">
-          <table class="table table-bordered">
+        <div class="table-scroll">
+          <table class="table table-bordered" style="min-width: 1500px">
             <thead>
-              <tr>
-                <th rowspan="2" style="vertical-align: middle; text-align: center; width: 10px">#</th>
-                <th style="vertical-align: middle; text-align: center" rowspan="2">Code</th>
-                <th style="vertical-align: middle; text-align: center" rowspan="2">Date Delivery</th>
-                <th style="vertical-align: middle; text-align: center" rowspan="2">Driver</th>
-                <th style="vertical-align: middle; text-align: center" rowspan="2">Penganggung Jawab</th>
-                <th style="vertical-align: middle; text-align: center" rowspan="2">Ttl Qty</th>
-                <th style="vertical-align: middle; text-align: center" rowspan="2">Ttl Price</th>
-                <th style="vertical-align: middle; text-align: center" colspan="2">Actual</th>
-                <th rowspan="2" style="vertical-align: middle; text-align: center; width: 160px">Action</th>
+              <tr class="text-center">
+                <th rowspan="2" style="vertical-align: middle; width: 10px">#</th>
+                <th style="vertical-align: middle;" rowspan="2">Code</th>
+                <th style="vertical-align: middle; width: 300px" rowspan="2">Date Delivery</th>
+                <th style="vertical-align: middle; width: 300px" rowspan="2">Driver</th>
+                <th style="vertical-align: middle; width: 400px" rowspan="2">Penganggung Jawab</th>
+                <th style="vertical-align: middle;" rowspan="2">Ttl Price</th>
+                <th style="vertical-align: middle; width: 70px" rowspan="2">Ttl Qty</th>
+                <th style="vertical-align: middle; width: 70px" rowspan="2">Ttl Order</th>
+                <th style="vertical-align: middle;" colspan="2">Actual</th>
+                <th style="vertical-align: middle;" colspan="3" >Status Order</th>
+                <th rowspan="2" style="vertical-align: middle; width: 100px">Action</th>
               </tr>
               <tr>
                 <th>Qty</th>
                 <th>Total</th>
+                <th style="width: 80px">Belum</th>
+                <th style="width: 80px">Terkirim</th>
+                <th style="width: 80px">Batal</th>
               </tr>
             </thead>
             @if (!count($results))
@@ -90,10 +95,15 @@ Laporan
                 <td>{{ $item->dc->name }}</td>
                 <td>{{ $item->ttl_price }}</td>
                 <td>{{ $item->ttl_qty }}</td>
+                <td>{{ $item->detail->count() }}</td>
+
                 <td>{{ $item->total_actual($item->detail)['qty'] }}</td>
                 <td>{{ $item->total_actual($item->detail)['price'] }}</td>
+                <td>{{ $item->status($item->detail->toArray())['belum'] }}</td>
+                <td>{{ $item->status($item->detail->toArray())['terkirim'] }}</td>
+                <td>{{ $item->status($item->detail->toArray())['batal'] }}</td>
 
-                <td>
+                <td class="text-center">
                   @if($item->deleted_at)
                   <button class="btn btn-success btn-xs text-white restore" data-id="{{$item->id}}"><i
                       class="fas fa-sync-alt"></i> Restore</button>

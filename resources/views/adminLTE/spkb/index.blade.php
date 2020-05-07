@@ -75,7 +75,7 @@ SPKB
 										<td>{{ $item->date_delivery }}</td>
 										<td>{{ $item->user_driver->name ?? '' }}</td>
 										<td>{{ $item->dc->name ?? '' }}</td>
-										<td>{{ $item->ttl_price }}</td>
+										<td>Rp. {{ number_format($item->ttl_price, 0, 0, '.') }}</td>
 										<td>{{ $item->ttl_qty }}</td>
 
                     <td>

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Spkb;
+use PDF;
 use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\PDF;
 
 class ReportController extends Controller
 {
@@ -106,6 +108,17 @@ class ReportController extends Controller
         $output['message']  = $message;
 
         return response()->json($output);
+    }
+
+
+    //Print Report
+    function print(Request $request, Spkb $model) {
+        $model = $model->where('driver_id', '<>', 'NULL')->orderBy('date_delivery', 'desc');
+        
+        $this->data['results'] = $model->get();
+
+        $pdf = PDF::loadView('pdf.report', $this->data)->setPaper('a4', 'landscape');
+        return $pdf->stream();
     }
 
 }

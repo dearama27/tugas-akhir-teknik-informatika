@@ -29,10 +29,10 @@ class CustomerSeeder extends Seeder
                 'distribution_center_id' => rand(1,5),
                 'join_at' => gmdate('Y-m-d', time()+60*60*7),
             ]);
-            // if($no <= 10) {
-            // } else {
-            // break;
-            // }
+            if($no <= 20) {
+            } else {
+            break;
+            }
             $no++;
         }
     }

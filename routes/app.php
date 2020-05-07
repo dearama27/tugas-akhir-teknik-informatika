@@ -27,5 +27,8 @@ Route::resource('delivery', 'DeliveryController');
 //End Route spkb
 
 //Begin Route spkb
+Route::prefix('report')->group(function() {
+    Route::get('/print', 'ReportController@print')->name('report.print');
+});
 Route::resource('report', 'ReportController');
 //End Route spkb

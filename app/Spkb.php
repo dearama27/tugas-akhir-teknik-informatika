@@ -35,6 +35,26 @@ class Spkb extends Model
         ];
     }
 
+    function status($detailArray) {
+        $terkirim = count(array_filter($detailArray, function($x) {
+            return $x['delivery_status'] == 1;
+        }));
+
+        $batal = count(array_filter($detailArray, function($x) {
+            return $x['delivery_status'] == 2;
+        }));
+
+        $belum = count(array_filter($detailArray, function($x) {
+            return $x['delivery_status'] < 1;
+        }));
+
+        return [
+            'terkirim' => $terkirim,
+            'batal' => $batal,
+            'belum' => $belum,
+        ];
+    }
+
     function user_driver() {
         return $this->belongsTo(User::class, 'driver_id');
     }

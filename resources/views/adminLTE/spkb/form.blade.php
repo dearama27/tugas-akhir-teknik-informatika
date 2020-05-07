@@ -23,12 +23,22 @@ Form Spkb
           <h4>Data Spkb</h4>
           <div class="row">
 
+            @if (isset($data))
+            <!-- Date Delivery -->
+            <div class="form-group col-md-6">
+              <label for="date_delivery">No. SPKB <span class="text-danger">*</span></label>
+              <input disabled datepicker autocomplete="off" name="date_delivery" type="text" class="form-control"
+                id="date_delivery" placeholder="" value="{{isset($data) ? $data->code:''}}">
+            </div>
+            @endif
+
             <!-- Date Delivery -->
             <div class="form-group col-md-6">
               <label for="date_delivery">Date Delivery <span class="text-danger">*</span></label>
               <input datepicker autocomplete="off" name="date_delivery" type="text" class="form-control"
                 id="date_delivery" placeholder="" value="{{isset($data) ? $data->date_delivery:''}}">
             </div>
+
             <!-- Driver Id -->
             <div class="form-group col-md-6">
               <label for="driver_id">Driver <span class="text-danger">*</span></label>

@@ -29,6 +29,10 @@ class OrderController extends Controller
 
             $model = $model->where(DB::raw('LOWER(date_delivery)'), "LIKE", "%$serach%");
         }
+
+
+        //Filter Hanya yang belum terelasi dengan spkb/belum dibuat spkb
+        $model = $model->where('related_spkb', 0);
         
         $this->data['results'] = $model->paginate(10);
 
@@ -53,6 +57,7 @@ class OrderController extends Controller
 
 
 
+    //Save Order
     public function store(Order $model, Request $req) {
 
         try {   

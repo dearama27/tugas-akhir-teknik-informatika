@@ -36,11 +36,12 @@ Data Customer SPKB
             <tr>
               <th style="width: 10px">#</th>
               <th style="width: 300px">Data Customer</th>
-              <th>Mobile Phone</th>
-              <th>Koordinat</th>
-              <th>Join At</th>
+              <th style="width: 200px">Mobile Phone</th>
+              <th style="width: 200px">Koordinat</th>
+              <th style="width: 200px">Join At</th>
   
               <th style="width: 80px">Status</th>
+              <th >Ket.</th>
             </tr>
           </thead>
           @if (!count($detail))
@@ -81,6 +82,9 @@ Data Customer SPKB
                 <span class="badge bg-danger">Dibatalkan</span>
                 @endif
               </td>
+
+              <td style="vertical-align: middle">{{ $res->keterangan ?? '-' }}</td>
+
             </tr>
             @php
             $no++;
@@ -89,6 +93,13 @@ Data Customer SPKB
   
           </tbody>
         </table>
+
+        <div class="card-footer">
+          <div class="btn-group">
+          <a class="btn btn-secondary" href="{{route('delivery.index')}}"><i class="fa fa-arrow-left"></i>
+              Back</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -120,6 +131,13 @@ $('[data-currency]').inputmask({
     toastr.success('Data koordinat di copy Ke clipboard<br/>Ctrl+v untuk paste');
   })
 
+  $('.open-gmaps').click(function() {
+
+let url = 'https://www.google.com/maps/place/';
+let data = $(this).data('coordinate');
+
+window.open(`${url}${data}`, '_blank')
+})
 </script>
 @endpush
 

@@ -72,9 +72,9 @@ Pengiriman
               @endforeach
 
               <tr>
-                <td class="text-right" colspan="5">Total Actual</td>
-                <td><input type="text" class="form-control ttl_actual_qty" name="ttl_actual_qty" value="{{$order->order->ttl_actual_qty}}" /></td>
-                <td><input data-currency type="text" class="form-control ttl_actual_total" name="ttl_actual_total" value="{{$order->order->ttl_actual_total}}" /></td>
+                <td style="vertical-align: middle" class="text-right" colspan="5">Total Actual</td>
+                <td style="vertical-align: middle"><input readonly type="text" class="form-control ttl_actual_qty" name="ttl_actual_qty" value="{{$order->order->ttl_actual_qty}}" /></td>
+                <td style="vertical-align: middle"><input readonly data-currency type="text" class="form-control ttl_actual_total" name="ttl_actual_total" value="{{$order->order->ttl_actual_total}}" /></td>
             </tbody>
           </table>
         </div>
@@ -90,11 +90,36 @@ Pengiriman
           </div>
 
           @if ($order->delivery_status == 0)
-          <button data-status="2" type="button" id="cancel-delivery" class="btn btn-warning set-status"><i class="fa fa-redo"></i> Batalkan Pengiriman</button>
+          <button type="button" id="cancel-delivery" class="btn btn-warning"><i class="fa fa-redo"></i> Batalkan Pengiriman</button>
           @endif
         </div>
 
+        <input type="text" class="keterangan" name="keterangan" hidden>
+
       </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-pembatalan" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Pengiriman di Batalkan</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <textarea type="text" class="form-control" id="keterangan" rows="5" placeholder="Alasan Pembatalan"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" data-status="2"  class="btn btn-primary set-status" id="save-modal">Save</button>
+      </div>
     </div>
   </div>
 </div>
@@ -132,11 +157,18 @@ $('[data-currency]').inputmask({
       confirmButtonText: 'Ya',
     }).then(btn => {
       if(btn.value) {
-        let status = $(this).data('status');
-        $('[role="form"]')[0].submit()
+
+        $('#modal-pembatalan').modal('show')
+
+        // let status = $(this).data('status');
+        // $('[role="form"]')[0].submit()
       }
     })
   })
+
+  $('#save-modal').click(function() {
+      $('[role="form"]')[0].submit()
+  });
 
   $('.actual_qty').keyup(function() {
     let tr = $(this).closest('tr');
@@ -166,6 +198,10 @@ $('[data-currency]').inputmask({
     })
 
   }
+
+  $('#keterangan').keyup(function() {
+    $('.keterangan').val($(this).val());
+  })
 </script>
 @endpush
 

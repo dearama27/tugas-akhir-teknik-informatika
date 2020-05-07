@@ -76,14 +76,14 @@ class SpkbController extends Controller
 
                 foreach($order as $o) {
                     $ttl_order  += 1;
-                    $ttl_price  += $o->ttl_qty;
-                    $ttl_qty    += $o->ttl_price;
+                    $ttl_price  += $o->ttl_price;
+                    $ttl_qty    += $o->ttl_qty;
                 }
 
                 $header["code"]          = $code;
                 $header["date_delivery"] = $date;
                 $header["driver_id"]     = 0;
-                $header["pic_id"]        = 0;
+                $header["pic_id"]        = $dc->id;
                 $header["ttl_order"]     = $ttl_order;
                 $header["ttl_price"]     = $ttl_price;
                 $header["ttl_qty"]       = $ttl_qty;
@@ -118,7 +118,7 @@ class SpkbController extends Controller
 			$model->driver_id       = $req->driver_id;
 			$model->pic_id          = $req->pic_id;
 			$model->ttl_order       = $req->ttl_order;
-			$model->ttl_price       = $req->ttl_price;
+			$model->ttl_price       = $this->getInt($req->ttl_price);
 			$model->ttl_qty         = $req->ttl_qty;
 
             $model->save();
