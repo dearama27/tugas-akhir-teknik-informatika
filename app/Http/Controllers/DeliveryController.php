@@ -77,7 +77,7 @@ class DeliveryController extends Controller
             DB::beginTransaction();
 
             //Update Status Delivery di table spkb_order
-            SpkbOrder::where('id', $req->id)->update([
+            $sp_order = SpkbOrder::where('id', $req->id)->update([
                 "delivery_status" => $req->delivery_status,
                 "keterangan"      => $req->keterangan
             ]);
@@ -105,7 +105,7 @@ class DeliveryController extends Controller
             $message = $th->getMessage().' '.$th->getLine();
         }
 
-        return redirect()->to(route('delivery.edit', ['delivery' => $req->spkb_id]))->with('status', $status)->with('message', $message);
+        return redirect()->to(route('delivery.edit', ['delivery' => $sp_order->spkb_id]))->with('status', $status)->with('message', $message);
     }
 
     public function store(Spkb $model, Request $req) {
