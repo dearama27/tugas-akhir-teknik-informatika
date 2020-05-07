@@ -50,11 +50,6 @@ class DeliveryController extends Controller
         return view($this->view.'.form', $this->data);
     }
 
-    public function show() {
-
-    }
-
-
     public function edit(Request $req, Spkb $model, $id) {
         $data               = Spkb::where('id', $id)->first();
     
@@ -110,7 +105,7 @@ class DeliveryController extends Controller
             $message = $th->getMessage().' '.$th->getLine();
         }
 
-        return redirect()->to(route('delivery.edit', ['delivery' => $req->id]))->with('status', $status)->with('message', $message);
+        return redirect()->to(route('delivery.edit', ['delivery' => $req->spkb_id]))->with('status', $status)->with('message', $message);
     }
 
     public function store(Spkb $model, Request $req) {
