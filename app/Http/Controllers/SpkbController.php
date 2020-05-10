@@ -24,8 +24,10 @@ class SpkbController extends Controller
         $this->view             = $this->template.$this->view;
     }
 
+    //Menampilkan Daftar SPKB
     public function index(Spkb $model, Request $req) {
 
+        //Query Pencarian
         if($req->get('search') != '') {
 
             $serach = strtolower($req->get('search'));
@@ -38,24 +40,30 @@ class SpkbController extends Controller
         return view($this->view.'.index', $this->data);
     }
 
+    //Menampilkan Form 
     public function create() {
-
-        return view($this->view.'.form', $this->data);
+        //Tidak ada Form
+        // return view($this->view.'.form', $this->data);
     }
 
-    public function show() {
-
-    }
-
+    //Menampilkan Form Edit SPKB
     public function edit(Spkb $model, $id) {
+        //Mengambil data spkb berdasarkan ID
         $this->data['data']     = $model->where('id', $id)->first();
 
+        //Mengambil data user dengan access id 3 = driver
         $this->data['driver']   = User::where('access_role_id', 3)->get();
+
+        //Mengambil data DC
         $this->data['dc']       = DistributionCenter::get();
+
         return view($this->view.'.form', $this->data);
     }
 
+    //Mencetak dalam format PDF
     public function print($code_spkb) {
+
+        //Mengambil data spkb berdasarkan CODE
         $spkb = Spkb::where('code', $code_spkb)->first();
 
         $data['spkb'] = $spkb;
@@ -64,7 +72,9 @@ class SpkbController extends Controller
         return $pdf->stream();
     }
 
+    //Meng-generate SPKB
     public function generate(Request $request) {
+        
         //Ambil Data Distribusi Center
         $distribution_zone = DistributionCenter::get();
 
@@ -98,6 +108,7 @@ class SpkbController extends Controller
                     $ttl_qty    += $o->ttl_qty;
                 }
 
+                //Data yang akan di simpan ke table spkb dengan ORM (Object Relational Mapping)
                 $header["code"]          = $code;
                 $header["date_delivery"] = $date;
                 $header["driver_id"]     = 0;
@@ -109,12 +120,16 @@ class SpkbController extends Controller
                 //Simpan data spkb
                 $spkb = Spkb::create($header);
 
+                //Simpan data order yang ada di spkb
                 foreach($order as $o) {
+                    
+                    //simpan ke table spkb_orders
                     SpkbOrder::create([
-                        'spkb_id' => $spkb->id,
+                        'spkb_id'  => $spkb->id,
                         'order_id' => $o->id,
                     ]);
-
+                    
+                    //Update order bahwa sudah terelasi dengan spkb.
                     $o->update(['related_spkb' => 1]);
                 }
 
@@ -125,11 +140,15 @@ class SpkbController extends Controller
     }
 
 
+    //simpan data spkb
     public function store(Spkb $model, Request $req) {
 
         try {   
             DB::beginTransaction();
+
             if(isset($req->id)) {
+
+                //
                 $model = Spkb::find($req->id);
             }
 
@@ -162,11 +181,7 @@ class SpkbController extends Controller
         return redirect($this->base)->with('status', $status)->with('message', $message);
     }
 
-
-    public function update() {
-
-    }
-
+    //Hapus SPKB
     public function destroy(Spkb $model, $id) {
 
         try {
