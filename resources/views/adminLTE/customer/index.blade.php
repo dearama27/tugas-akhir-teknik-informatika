@@ -46,7 +46,7 @@ Customer
 										<th>Customer Code</th> --}}
 										<th>Distribution Center</th>
 										<th>Mobile Phone</th>
-										<th>Koordinat</th>
+										
 										<th>Join At</th>
                     <th style="width: 160px">Action</th>
                   </tr>
@@ -73,10 +73,10 @@ Customer
 										{{-- <td style="vertical-align: middle">{{ $item->address }}</td> --}}
 										<td style="vertical-align: middle">{{ $item->dc->name }}</td>
 										<td style="vertical-align: middle">{{ $item->mobile_phone }}</td>
-										<td style="vertical-align: middle" title="{{ $item->lat }},{{ $item->lng }}">
+										{{-- <td style="vertical-align: middle" title="{{ $item->lat }},{{ $item->lng }}">
                       <button class="btn btn-default copy" data-copy="{{ $item->lat }},{{ $item->lng }}" type="button">Copy</button>
                       <button class="btn btn-primary open-gmaps" data-coordinate="{{ $item->lat }},{{ $item->lng }}"  type="button">Open</button>
-                    </td>
+                    </td> --}}
 
 										<td style="vertical-align: middle">{{ $item->join_at }}</td>
 

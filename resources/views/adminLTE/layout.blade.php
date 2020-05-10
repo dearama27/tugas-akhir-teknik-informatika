@@ -275,7 +275,7 @@ to get the desired effect
 
   <!-- Main Footer -->
   <footer class="main-footer text-sm">
-    <strong>Copyright &copy; {{Date('Y')}} <a href="http://dani.work">{{config('app.name')}}</a>.</strong>
+    <strong>Copyright &copy; {{Date('Y')}} Dea Anggi Rahmawati.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> {{conf('version')}}

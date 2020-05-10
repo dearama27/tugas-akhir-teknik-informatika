@@ -46,7 +46,7 @@ Order
 										<th>Ttl Price</th>
 										<th>Ttl Qty</th>
 
-                    <th style="width: 80px">Status</th>
+                    
                     <th style="width: 160px">Action</th>
                   </tr>
                 </thead>
@@ -69,13 +69,7 @@ Order
 										<td>{{ $item->ttl_price }}</td>
 										<td>{{ $item->ttl_qty }}</td>
 
-                    <td>
-                      @if(!$item->deleted_at)
-                        <span class="badge bg-success">Aktif</span>
-                      @else
-                        <span class="badge bg-danger">Deleted</span>
-                      @endif
-                    </td>
+                    
                     <td>
                         <a href="{{route($resource.'.edit', $item->id)}}" class="btn btn-primary btn-xs text-white"><i class="fas fa-pencil-alt"></i> Edit</a>
                         @if($item->deleted_at)

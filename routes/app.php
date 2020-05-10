@@ -13,6 +13,7 @@ Route::resource('product', 'ProductController');
 //Begin Route spkb
 Route::prefix('spkb')->group(function() {
     Route::get('/generate', 'SpkbController@generate')->name('spkb.generate');
+    Route::get('/print/{code_spkb}', 'SpkbController@print')->name('spkb.print');
 });
 Route::resource('spkb', 'SpkbController');
 

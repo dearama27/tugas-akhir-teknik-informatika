@@ -83,9 +83,7 @@ SPKB
                         @if($item->deleted_at)
                         <button class="btn btn-success btn-xs text-white restore" data-id="{{$item->id}}"><i class="fas fa-sync-alt"></i> Restore</button>
                         @else
-                          @if (Role::isAllow("delete"))
-                          <button class="btn btn-default btn-xs" data-id="{{$item->id}}"><i class="fa fa-print"></i> Print</button>
-                          @endif
+                          <a href="{{route('spkb.print', $item->code)}}" class="btn btn-default btn-xs" data-id="{{$item->id}}"><i class="fa fa-print"></i> Print</a>
                         @endif
                     </td>
                   </tr>

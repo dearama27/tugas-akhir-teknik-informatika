@@ -37,7 +37,7 @@ Data Customer SPKB
               <th style="width: 10px">#</th>
               <th style="width: 300px">Data Customer</th>
               <th style="width: 200px">Mobile Phone</th>
-              <th style="width: 200px">Koordinat</th>
+
               <th style="width: 200px">Join At</th>
   
               <th style="width: 80px">Status</th>
@@ -64,14 +64,8 @@ Data Customer SPKB
                 </a>
               </td>
               <td style="vertical-align: middle">{{ $item->mobile_phone }}</td>
-              <td style="vertical-align: middle" title="{{ $item->lat }},{{ $item->lng }}">
-                <button class="btn btn-default copy" data-copy="{{ $item->lat }},{{ $item->lng }}"
-                  type="button">Copy</button>
-                <button class="btn btn-primary open-gmaps" data-coordinate="{{ $item->lat }},{{ $item->lng }}"
-                  type="button">Open</button>
-              </td>
   
-              <td style="vertical-align: middle">{{ $item->join_at }}</td>
+              <td style="vertical-align: middle">{{ $item->join_at }}</>
   
               <td style="vertical-align: middle">
                 @if(!$res->delivery_status)

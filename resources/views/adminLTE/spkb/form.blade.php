@@ -75,9 +75,6 @@ Form Spkb
                     <th>Customer</th>
                     <th>Ttl Price</th>
                     <th>Ttl Qty</th>
-
-                    <th style="width: 80px">Status</th>
-                    <th style="width: 160px">Action</th>
                   </tr>
                 </thead>
                 @if (!count($data->detail))
@@ -96,25 +93,6 @@ Form Spkb
                     <td>{{ $item->customer->name }}</td>
                     <td>{{ number_format($item->ttl_price) }}</td>
                     <td>{{ $item->ttl_qty }}</td>
-
-                    <td>
-                      @if(!$item->deleted_at)
-                      <span class="badge bg-success">Aktif</span>
-                      @else
-                      <span class="badge bg-danger">Deleted</span>
-                      @endif
-                    </td>
-                    <td>
-                      @if($item->deleted_at)
-                      <button class="btn btn-success btn-xs text-white restore" data-id="{{$item->id}}"><i
-                          class="fas fa-sync-alt"></i> Restore</button>
-                      @else
-                      @if (Role::isAllow("delete"))
-                      <button class="btn btn-danger btn-xs text-white delete" data-id="{{$item->id}}"><i
-                          class="fas fa-trash"></i> Delete</button>
-                      @endif
-                      @endif
-                    </td>
                   </tr>
                   @endforeach
 

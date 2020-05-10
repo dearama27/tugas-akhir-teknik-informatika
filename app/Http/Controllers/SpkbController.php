@@ -9,6 +9,7 @@ use App\Spkb;
 use App\SpkbOrder;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class SpkbController extends Controller
 {
@@ -54,27 +55,44 @@ class SpkbController extends Controller
         return view($this->view.'.form', $this->data);
     }
 
+    public function print($code_spkb) {
+        $spkb = Spkb::where('code', $code_spkb)->first();
+
+        $data['spkb'] = $spkb;
+
+        $pdf = PDF::loadView('pdf.spkb', $data)->setPaper('a4', 'landscape');
+        return $pdf->stream();
+    }
+
     public function generate(Request $request) {
+        //Ambil Data Distribusi Center
         $distribution_zone = DistributionCenter::get();
-        $date_order        = gmdate('Y-m-d', time()+60*60*7);
+
+        //Tanggal Besok
+        $date_order        = gmdate('Y-m-d', (strtotime('+1 days'))+60*60*7);
 
         foreach($distribution_zone as $dc) {
             $date   = gmdate('Y-m-d', time()+60*60*7);
 
+            //Order Berdasarkan Customer distribusi center
             $order = Order::whereHas('customer', function($q) use($dc) {
                 $q->where('distribution_center_id', $dc->id);
             })->where(['date_delivery'=>$date,'related_spkb' => 0])->get();
 
             if($order->count() > 0) {
 
+                //Membuat Kode SPKB
                 $count  = Spkb::where('date_delivery', $date)->get()->count();
-                $code   = $dc->dc_code.gmdate('Ymd', time()+60*60*7).str_pad($count, 4, '0', STR_PAD_LEFT);
+                $code   = $dc->dc_code.gmdate('Ymd', (strtotime('+1 days'))+60*60*7).str_pad($count, 4, '0', STR_PAD_LEFT);
 
+                //Inisial variabel total
                 $ttl_order = 0;
                 $ttl_price = 0;
                 $ttl_qty   = 0;
 
                 foreach($order as $o) {
+
+                    //Menghitung total
                     $ttl_order  += 1;
                     $ttl_price  += $o->ttl_price;
                     $ttl_qty    += $o->ttl_qty;
@@ -88,6 +106,7 @@ class SpkbController extends Controller
                 $header["ttl_price"]     = $ttl_price;
                 $header["ttl_qty"]       = $ttl_qty;
 
+                //Simpan data spkb
                 $spkb = Spkb::create($header);
 
                 foreach($order as $o) {
