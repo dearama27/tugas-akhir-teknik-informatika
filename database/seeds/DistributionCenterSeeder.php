@@ -17,13 +17,15 @@ class DistributionCenterSeeder extends Seeder
 
         $no           = 1;
         
-        foreach($toArray as $cust) {
+        foreach($toArray as $dc) {
 
-            DistributionCenter::create([
-                'dc_code'   => $cust->dc_code,
-                'name'      => $cust->text,
-            ]);
-
+            if(preg_match("/RUTE/", $dc->text)) {
+                DistributionCenter::create([
+                    'dc_code'   => $dc->dc_code,
+                    'name'      => $dc->text,
+                ]);
+            }
+            
             $no++;
         }
     }
