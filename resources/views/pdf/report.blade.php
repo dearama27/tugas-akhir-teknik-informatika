@@ -49,7 +49,7 @@
         </thead>
         @if (!count($results))
         <tr>
-            <td colspan="8" class="text-center">@lang('general.not_found')</td>
+            <td colspan="13" class="text-center">@lang('general.not_found')</td>
         </tr>
         @endif
         <tbody>

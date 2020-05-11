@@ -29,7 +29,7 @@ Laporan
       </div>
       <div class="card-footer">
           <button style="width: 150px" class="btn btn-primary" id="filter-act"><i class="fa fa-eye"></i> Filter</button>
-          <a target="_blank" href="{{route('report.print')}}" style="width: 150px" class="btn btn-danger"><i class="fa fa-print"></i> Print</a>
+          <button type="button" id="print" style="width: 150px" class="btn btn-danger"><i class="fa fa-print"></i> Print</button>
       </div>
     </div>
     <div class="card">
@@ -218,6 +218,12 @@ return {}
 
 $('#filter-act').click(function() {
   $('#form-filter')[0].submit()
+});
+
+$('#print').click(function() {
+  let start = $('#startDate').val();
+  let end = $('#endDate').val();
+  window.open('{{route('report.print')}}?start='+start+'&end='+end, '_blank')
 })
 </script>
 @endpush
