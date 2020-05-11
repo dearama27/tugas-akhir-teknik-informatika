@@ -19,7 +19,9 @@ class CreateOrdersTable extends Migration
 			$table->date('date_delivery');
 			$table->integer('ttl_price');
 			$table->integer('ttl_qty');
-            $table->bigInteger('customer_id');
+            $table->bigInteger('customer_id')->unsigned();
+            $table->foreign('customer_id')
+            ->references('id')->on('customers');
             
             
             $table->bigInteger('ttl_actual_qty')->default(0);
@@ -29,6 +31,7 @@ class CreateOrdersTable extends Migration
 
             $table->timestamps();
         });
+
     }
 
     /**

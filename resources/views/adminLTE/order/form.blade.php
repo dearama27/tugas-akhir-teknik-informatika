@@ -166,7 +166,7 @@ $('[data-currency]').inputmask({
           <input required data-currency class="form-control row-price" name="detail[${length}][price]" />
         </td>
         <td>
-          <input required class="form-control row-qty" name="detail[${length}][qty]" />
+          <input required type="number" class="form-control row-qty" name="detail[${length}][qty]" />
         </td>
         <td>
           <input readonly data-currency class="form-control row-total" name="detail[${length}][total]" />

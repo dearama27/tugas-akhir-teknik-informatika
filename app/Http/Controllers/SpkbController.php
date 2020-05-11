@@ -82,17 +82,16 @@ class SpkbController extends Controller
         $date_order        = gmdate('Y-m-d', (strtotime('+1 days'))+60*60*7);
 
         foreach($distribution_zone as $dc) {
-            $date   = gmdate('Y-m-d', time()+60*60*7);
 
             //Order Berdasarkan Customer distribusi center
             $order = Order::whereHas('customer', function($q) use($dc) {
                 $q->where('distribution_center_id', $dc->id);
-            })->where(['date_delivery'=>$date,'related_spkb' => 0])->get();
+            })->where(['date_delivery'=>$date_order,'related_spkb' => 0])->get();
 
             if($order->count() > 0) {
 
                 //Membuat Kode SPKB
-                $count  = Spkb::where('date_delivery', $date)->get()->count();
+                $count  = Spkb::where('date_delivery', $date_order)->get()->count();
                 $code   = $dc->dc_code.gmdate('Ymd', (strtotime('+1 days'))+60*60*7).str_pad($count, 4, '0', STR_PAD_LEFT);
 
                 //Inisial variabel total
@@ -110,7 +109,7 @@ class SpkbController extends Controller
 
                 //Data yang akan di simpan ke table spkb dengan ORM (Object Relational Mapping)
                 $header["code"]          = $code;
-                $header["date_delivery"] = $date;
+                $header["date_delivery"] = $date_order;
                 $header["driver_id"]     = 0;
                 $header["pic_id"]        = $dc->id;
                 $header["ttl_order"]     = $ttl_order;
