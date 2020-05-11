@@ -29,9 +29,10 @@ Form Spkb
               <label for="date_delivery">Date Delivery <span class="text-danger">*</span></label>
               <input datepicker autocomplete="off" name="date_delivery" type="text" class="form-control" id="date_delivery" placeholder="" value="{{isset($data) ? $data->date_delivery:''}}">
             </div>
+
             <!-- Driver Id -->
             <div class="form-group col-md-12">
-              <label for="driver_id">Driver Id <span class="text-danger">*</span></label>
+              <label for="driver_id">Driver <span class="text-danger">*</span></label>
               <input autocomplete="off" name="driver_id" type="text" class="form-control" id="driver_id" placeholder="" value="{{isset($data) ? $data->driver_id:''}}">
             </div>
             

@@ -29,8 +29,24 @@ class ReportController extends Controller
 
             $model = $model->where(DB::raw('LOWER(date_delivery)'), "LIKE", "%$serach%");
         }
+
         $model = $model->where('driver_id', '<>', 'NULL')->orderBy('date_delivery', 'desc');
         
+
+        if($req->start) {
+
+            $start = gmdate('Y-m-d', strtotime(str_replace('/', '-', urldecode($req->start))));
+
+            $model = $model->where('date_delivery', '>=', $start);
+        }
+        if($req->end) {
+
+            $end = gmdate('Y-m-d', strtotime(str_replace('/', '-', urldecode($req->end))));
+
+            $model = $model->where('date_delivery', '<=', $end);
+        }
+
+        $this->data['req']     = $req;
         $this->data['results'] = $model->paginate(10);
 
         return view($this->view.'.index', $this->data);

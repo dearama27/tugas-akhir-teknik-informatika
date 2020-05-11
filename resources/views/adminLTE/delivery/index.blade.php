@@ -54,6 +54,7 @@ Pengiriman
 										<th>Penanggung Jawab</th>
 										<th>Ttl Qty</th>
 										<th>Ttl Price</th>
+										<th>Status</th>
                     <th style="width: 160px">Action</th>
                   </tr>
                 </thead>
@@ -77,6 +78,10 @@ Pengiriman
 										<td>{{ $item->user_driver->name ?? '' }}</td>
 										<td>{{ $item->ttl_qty }}</td>
 										<td>{{ number_format($item->ttl_price) }}</td>
+                    @php
+                      $kakulasi = $item->status($item->detail->toArray());
+                    @endphp
+										<td>{!! $kakulasi['terkirim']+$kakulasi['batal'] == $item->detail->count() ? '<span class="badge badge-success">Selesai</span>':'<span class="badge badge-warning">Proses</span>' !!}</td>
 
                     <td>
                         <a href="{{route($resource.'.edit', $item->id)}}" class="btn btn-primary btn-xs text-white"><i class="fa fa-search"></i> Buka</a>

@@ -15,19 +15,20 @@ Laporan
         Filter
       </div>
       <div class="card-body">
-        <form action="" class="row">
+        <form action="" class="row" id="form-filter" method="GET">
+        
           <div class="form-group col-md-6">
             <label>Tanggal Pengiriman (Awal)</label>
-            <input type="text" class="form-control" id="startDate" placeholder="Start Date">
+            <input autocomplete="off" name="start" type="text" class="form-control" id="startDate" placeholder="Start Date" value="{{$req->start}}">
           </div>
           <div class="form-group col-md-6">
             <label>Tanggal Pengiriman (Akhir)</label>
-            <input type="text" class="form-control" id="endDate" placeholder="End Date">
+            <input autocomplete="off" name="end" type="text" class="form-control" id="endDate" placeholder="End Date" value="{{$req->end}}">
           </div>
         </form>
       </div>
       <div class="card-footer">
-          <button style="width: 150px" class="btn btn-primary"><i class="fa fa-eye"></i> Filter</button>
+          <button style="width: 150px" class="btn btn-primary" id="filter-act"><i class="fa fa-eye"></i> Filter</button>
           <a target="_blank" href="{{route('report.print')}}" style="width: 150px" class="btn btn-danger"><i class="fa fa-print"></i> Print</a>
       </div>
     </div>
@@ -65,7 +66,7 @@ Laporan
                 <th style="vertical-align: middle; width: 70px" rowspan="2">Ttl Order</th>
                 <th style="vertical-align: middle;" colspan="2">Actual</th>
                 <th style="vertical-align: middle;" colspan="3" >Status Order</th>
-                <th rowspan="2" style="vertical-align: middle; width: 100px">Action</th>
+                {{-- <th rowspan="2" style="vertical-align: middle; width: 100px">Action</th> --}}
               </tr>
               <tr>
                 <th>Qty</th>
@@ -103,7 +104,7 @@ Laporan
                 <td>{{ $item->status($item->detail->toArray())['terkirim'] }}</td>
                 <td>{{ $item->status($item->detail->toArray())['batal'] }}</td>
 
-                <td class="text-center">
+                {{-- <td class="text-center">
                   @if($item->deleted_at)
                   <button class="btn btn-success btn-xs text-white restore" data-id="{{$item->id}}"><i
                       class="fas fa-sync-alt"></i> Restore</button>
@@ -113,7 +114,7 @@ Laporan
                       class="fa fa-print"></i> Print</button>
                   @endif
                   @endif
-                </td>
+                </td> --}}
               </tr>
               @php
               $no++;
@@ -213,7 +214,10 @@ if (input.id == 'endDate') {
 }
 
 return {}
-
 }
+
+$('#filter-act').click(function() {
+  $('#form-filter')[0].submit()
+})
 </script>
 @endpush

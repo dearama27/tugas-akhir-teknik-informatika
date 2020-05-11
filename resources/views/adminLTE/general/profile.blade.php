@@ -22,7 +22,7 @@ $user = Auth::user();
                 <div class="card card-primary card-outline">
                     <div class="card-body box-profile">
                         <div style="overflow:hidden; width: 100px;" class="m-auto text-center">
-                            <div class="pl-2 pr-2  label-upload-avatar" style="">Upload Avatar</div>
+                            {{-- <div class="pl-2 pr-2  label-upload-avatar" style="">Upload Avatar</div> --}}
                             <img class="profile-user-img img-fluid img-circle" src="{{avatar_image($user)}}"
                                 alt="User profile picture">
                         </div>
@@ -42,12 +42,12 @@ $user = Auth::user();
                                 <small>{{$user->email}}</small>
                             </li>
                             <li class="list-group-item">
-                                <b class="d-block">Registred</b>
+                                <b class="d-block">Registered</b>
                                 <small>{{is_null($user->created_at) ? '-':$user->created_at}}</small>
                             </li>
                         </ul>
 
-                        <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                        <a hidden href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -56,7 +56,7 @@ $user = Auth::user();
 
             </div>
             <!-- /.col -->
-            <div class="col-md-9">
+            <div hidden class="col-md-9">
                 <div class="card card-primary card-outline">
                     <div class="card-header p-2">
                         <ul class="nav nav-pills">

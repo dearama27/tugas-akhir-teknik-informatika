@@ -54,6 +54,7 @@ SPKB
 										<th>Penanggung Jawab</th>
 										<th>Ttl Price</th>
 										<th>Ttl Qty</th>
+										<th>Status</th>
                     <th style="width: 160px">Action</th>
                   </tr>
                 </thead>
@@ -76,14 +77,18 @@ SPKB
 										<td>{{ $item->user_driver->name ?? '' }}</td>
 										<td>{{ $item->dc->name ?? '' }}</td>
 										<td>Rp. {{ number_format($item->ttl_price, 0, 0, '.') }}</td>
-										<td>{{ $item->ttl_qty }}</td>
+                    <td>{{ $item->ttl_qty }}</td>
+                    @php
+                      $kakulasi = $item->status($item->detail->toArray());
+                    @endphp
+										<td>{!! $kakulasi['terkirim']+$kakulasi['batal'] == $item->detail->count() ? '<span class="badge badge-success">Selesai</span>':'<span class="badge badge-warning">Proses</span>' !!}</td>
 
                     <td>
                         <a href="{{route($resource.'.edit', $item->id)}}" class="btn btn-primary btn-xs text-white"><i class="fas fa-pencil-alt"></i> Edit</a>
                         @if($item->deleted_at)
                         <button class="btn btn-success btn-xs text-white restore" data-id="{{$item->id}}"><i class="fas fa-sync-alt"></i> Restore</button>
                         @else
-                          <a href="{{route('spkb.print', $item->code)}}" class="btn btn-default btn-xs" data-id="{{$item->id}}"><i class="fa fa-print"></i> Print</a>
+                          {{-- <a href="{{route('spkb.print', $item->code)}}" class="btn btn-default btn-xs" data-id="{{$item->id}}"><i class="fa fa-print"></i> Print</a> --}}
                         @endif
                     </td>
                   </tr>

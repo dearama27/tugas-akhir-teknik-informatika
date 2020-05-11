@@ -61,7 +61,7 @@ Pengiriman
                 <td style="vertical-align: middle;">
                   <input type="hidden" name="product[{{$key}}][order_product_id]" class="form-control " value="{{$item->id}}"/>
                   {{-- <input type="hidden" name="product[{{$key}}][order_id]" class="form-control " value="{{$item->order_id}}"/> --}}
-                  <input name="product[{{$key}}][actual_qty]" class="form-control actual_qty" value="{{$item->actual_qty}}"/>
+                  <input @if ($order->delivery_status > 0) readonly @endif  name="product[{{$key}}][actual_qty]" class="form-control actual_qty" value="{{$item->actual_qty}}"/>
                 </td>
 
                 <td style="vertical-align: middle;">
@@ -82,7 +82,7 @@ Pengiriman
 
         <div class="card-footer">
           <div class="btn-group">
-            <button class="btn btn-secondary" onclick="history.back()"><i class="fa fa-arrow-left"></i>
+            <button type="button" class="btn btn-secondary" onclick="history.back()"><i class="fa fa-arrow-left"></i>
               Back</button>
             @if ($order->delivery_status == 0)
             <button data-status="1" type="submit" class="btn btn-primary set-status"><i class="fa fa-save"></i> Save</button>
