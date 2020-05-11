@@ -56,10 +56,6 @@ class ReportController extends Controller
         return view($this->view.'.form', $this->data);
     }
 
-    public function show() {
-
-    }
-
     public function edit(Spkb $model, $id) {
         $this->data['data'] = $model->find($id)->first();
         return view($this->view.'.form', $this->data);
@@ -131,6 +127,19 @@ class ReportController extends Controller
     function print(Request $request, Spkb $model) {
         $model = $model->where('driver_id', '<>', 'NULL')->orderBy('date_delivery', 'desc');
         
+        if($request->start) {
+
+            $start = gmdate('Y-m-d', strtotime(str_replace('/', '-', urldecode($request->start))));
+
+            $model = $model->where('date_delivery', '>=', $start);
+        }
+        if($request->end) {
+
+            $end = gmdate('Y-m-d', strtotime(str_replace('/', '-', urldecode($request->end))));
+
+            $model = $model->where('date_delivery', '<=', $end);
+        }
+
         $this->data['results'] = $model->get();
 
         $pdf = PDF::loadView('pdf.report', $this->data)->setPaper('a4', 'landscape');
