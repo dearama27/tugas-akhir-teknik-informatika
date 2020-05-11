@@ -75,7 +75,7 @@ to get the desired effect
 |---------------------------------------------------------|
 -->
 {{-- <body class="hold-transition sidebar-mini"> --}}
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+{{-- <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed"> --}}
 <div class="wrapper" id="app">
   <!-- Navbar -->
   {{-- <nav class="main-header navbar navbar-expand navbar-white navbar-light"> --}}
@@ -91,7 +91,7 @@ to get the desired effect
     </ul>
 
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-3 d-none d-md-block">
+    {{-- <form class="form-inline ml-3 d-none d-md-block">
       <div class="input-group input-group-sm">
         <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
         <div class="input-group-append">
@@ -100,16 +100,16 @@ to get the desired effect
           </button>
         </div>
       </div>
-    </form>
+    </form> --}}
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
+        {{-- <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-comments"></i>
           <span class="badge badge-danger navbar-badge">3</span>
-        </a>
+        </a> --}}
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
@@ -164,10 +164,10 @@ to get the desired effect
       </li>
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#" id="open-notification">
+        {{-- <a class="nav-link" data-toggle="dropdown" href="#" id="open-notification">
           <i class="far fa-bell"></i>
           <span class="badge badge-warning navbar-badge">{{count_notify(Auth::user())}}</span>
-        </a>
+        </a> --}}
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" id="dropdown-notification">
           <span class="dropdown-item dropdown-header">15 Notifications</span>
           <div class="dropdown-divider"></div>
@@ -190,8 +190,8 @@ to get the desired effect
         </div>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
-            class="fas fa-th-large"></i></a>
+        {{-- <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
+            class="fas fa-th-large"></i></a> --}}
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -312,13 +312,13 @@ $(function () {
     let open = $(this).parent().hasClass("show");
     if(!open) {
       axios.post(`{{route("notification")}}`).then(res => {
-        
+
         $('.notification-item,.notification-divider').remove()
-        
+
         let html = '';
-        
+
         res.data.notifications.forEach(i => {
-          
+
           let val = i.data;
           html   += add_notification(val.title, i.created_at, val.image);
 
@@ -345,7 +345,7 @@ $(function () {
         </div>
     </a>
     <div class="dropdown-divider notification-divider"></div>
-  
+
     `;
     return html;
   }

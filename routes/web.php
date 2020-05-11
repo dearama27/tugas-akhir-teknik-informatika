@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-
+Route::get('/myProfile','ProfileController@myProfile');
 
 Route::namespace('\Frontend')->group(function() {
     Route::get('/', 'PublicController@index');

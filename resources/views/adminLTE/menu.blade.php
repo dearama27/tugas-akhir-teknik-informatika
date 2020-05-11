@@ -4,7 +4,7 @@
         <!-- Add icons to the links using the .nav-icon class
             with font-awesome or any other icon font library -->
         {{--
-        <li class="nav-header">Main Menu</li> --}} 
+        <li class="nav-header">Main Menu</li> --}}
         @php $role_id = Auth::user()->access_role_id; $menu = Role::buildMenu($role_id); @endphp {!! $menu !!}
         {{-- @php $role_id = Auth::user()->access_role_id; $menu = Role::buildMenu($role_id); @endphp {!! $menu !!} --}}
         {{-- <li class="nav-item">
@@ -14,9 +14,9 @@
             </a>
         </li> --}}
         @if ($role_id == 1)
-        <li class="nav-header">Super Admin</li>
-
-        <li class="nav-item has-treeview">
+        {{-- <li class="nav-header">Super Admin</li>
+ --}}
+        {{-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-lock"></i>
                 <p>
@@ -38,13 +38,13 @@
                     </a>
                 </li>
             </ul>
-        </li>
-        <li class="nav-item">
+        </li> --}}
+        {{-- <li class="nav-item">
             <a href="/settings" class="nav-link">
                 <i class="nav-icon fas fa-cog"></i>
                 <p>Settings</p>
             </a>
-        </li>
+        </li> --}}
         @endif
     </ul>
 </nav>
